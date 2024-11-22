@@ -1,0 +1,6 @@
+@Diplomski.API_HostAddress = http://localhost:5083
+
+GET {{Diplomski.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
