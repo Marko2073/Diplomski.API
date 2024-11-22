@@ -10,6 +10,7 @@ using Diplomski.Implementation.Logging;
 using Diplomski.Implementation.UseCases.Commands;
 using Diplomski.Implementation.UseCases.Queries;
 using Diplomski.Implementation.UseCases.Queries.Ef;
+using Diplomski.Implementation.Validators;
 using System.IdentityModel.Tokens.Jwt;
 
 namespace AspProjekat2024.API.Core
@@ -25,6 +26,8 @@ namespace AspProjekat2024.API.Core
             services.AddTransient<IGetBrandsQuery, EfGetBrandsQuery>();
             services.AddTransient<IGetOneBrandQuery, EfGetOneBrandQuery>();
             services.AddTransient<ICreateBrandCommand, EfCreateBrandCommand>();
+            services.AddTransient<CreateBrandDtoValidator>();
+
 
 
 
