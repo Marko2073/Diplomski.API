@@ -30,28 +30,7 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddSingleton<ITokenStorage, InMemoryTokenStorage>();
 
 
-//builder.Services.AddTransient<IApplicationActorProvider>(x =>
-//{
-//    var accessor = x.GetService<IHttpContextAccessor>();
 
-//    var request = accessor.HttpContext.Request;
-
-//    var authHeader = request.Headers.Authorization.ToString();
-
-//    var context = x.GetService<DatabaseContext>();
-
-//    return new JwtApplicationActorProvider(authHeader);
-//});
-//builder.Services.AddTransient<IApplicationActor>(x =>
-//{
-//    var accessor = x.GetService<IHttpContextAccessor>();
-//    if (accessor.HttpContext == null)
-//    {
-//        return new UnauthorizedActor();
-//    }
-
-//    return x.GetService<IApplicationActorProvider>().GetActor();
-//});
 builder.Services.AddTransient<IApplicationActorProvider, JwtApplicationActorProvider>();
 builder.Services.AddTransient<IApplicationActor>(x =>
 {
@@ -68,44 +47,7 @@ builder.Services.AddCors(options =>
                           .AllowAnyMethod());
 });
 
-//builder.Services.AddAuthentication(options =>
-//{
-//    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-//    options.DefaultSignInScheme = JwtBearerDefaults.AuthenticationScheme;
-//    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-//}).AddJwtBearer(cfg =>
-//{
-//    cfg.RequireHttpsMetadata = false;
-//    cfg.SaveToken = true;
-//    cfg.TokenValidationParameters = new TokenValidationParameters
-//    {
-//        ValidIssuer = settings.Jwt.Issuer,
-//        ValidateIssuer = true,
-//        ValidAudience = "Any",
-//        ValidateAudience = true,
-//        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(settings.Jwt.SecretKey)),
-//        ValidateIssuerSigningKey = true,
-//        ValidateLifetime = true,
-//        ClockSkew = TimeSpan.Zero
-//    };
-//    cfg.Events = new JwtBearerEvents
-//    {
-//        OnTokenValidated = context =>
-//        {
-//            // Token dohvatamo iz Authorization header-a
-//            Guid tokenId = context.HttpContext.Request.GetTokenId().Value;
 
-//            var storage = builder.Services.BuildServiceProvider().GetService<ITokenStorage>();
-
-//            if (!storage.Exists(tokenId))
-//            {
-//                context.Fail("Invalid token");
-//            }
-
-//            return Task.CompletedTask;
-//        }
-//    };
-//});
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
