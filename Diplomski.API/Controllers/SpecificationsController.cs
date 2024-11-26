@@ -1,14 +1,13 @@
 ﻿using Diplomski.Application.Dto.Creates;
 using Diplomski.Application.Dto.Searches;
 using Diplomski.Application.Dto.Updates;
-using Diplomski.Application.UseCases.Commands.Category;
 using Diplomski.Application.UseCases.Commands.Model;
-using Diplomski.Application.UseCases.Queries.Brand;
+using Diplomski.Application.UseCases.Commands.Specification;
 using Diplomski.Application.UseCases.Queries.Model;
+using Diplomski.Application.UseCases.Queries.Specification;
 using Diplomski.Implementation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Reflection.Metadata;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -16,35 +15,31 @@ namespace Diplomski.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ModelsController : ControllerBase
+    public class SpecificationsController : ControllerBase
     {
-
-
         private UseCaseHandler _handler;
-        public ModelsController(UseCaseHandler handler)
+        public SpecificationsController(UseCaseHandler handler)
         {
             _handler = handler;
         }
 
 
         [HttpGet]
-        public IActionResult Get([FromQuery] BaseSearch search, [FromServices] IGetModelsQuery query)
+        public IActionResult Get([FromQuery] BaseSearch search, [FromServices] IGetSpecificationsQuery query)
         {
             return Ok(_handler.HandleQuery(query, search));
         }
 
-        // GET api/<ModelsController>/5
         [HttpGet]
         [Route("{id}")]
-        public IActionResult Get(int id, [FromServices] IGetOneModelQuery query)
+        public IActionResult Get(int id, [FromServices] IGetOneSpecificationQuery query)
         {
             return Ok(_handler.HandleQuery(query, id));
         }
 
-        // POST api/<ModelsController>
         [HttpPost]
-        [Authorize]
-        public IActionResult Post([FromBody] CreateModelDto dto, [FromServices] ICreateModelCommand command)
+        //[Authorize]
+        public IActionResult Post([FromBody] CreateSpecificationDto dto, [FromServices] ICreateSpecificationCommand command)
         {
             _handler.HandleCommand(command, dto);
             return StatusCode(201);
@@ -53,10 +48,9 @@ namespace Diplomski.API.Controllers
 
         }
 
-        // PUT api/<ModelsController>/5
         [HttpPut("{id}")]
-        [Authorize]
-        public IActionResult Put(int id, [FromBody] UpdateModelDto dto, [FromServices] IUpdateModelCommand command)
+        //[Authorize]
+        public IActionResult Put(int id, [FromBody] UpdateSpecificationDto dto, [FromServices] IUpdateSpecificationCommand command)
         {
             dto.Id = id;
             _handler.HandleCommand(command, dto);
@@ -64,10 +58,9 @@ namespace Diplomski.API.Controllers
 
         }
 
-        // DELETE api/<ModelsController>/5
         [HttpDelete("{id}")]
-        [Authorize]
-        public IActionResult Delete(int id, [FromServices] IDeleteModelCommand command)
+        //[Authorize]
+        public IActionResult Delete(int id, [FromServices] IDeleteSpecificationCommand command)
         {
             _handler.HandleCommand(command, id);
             return StatusCode(204);

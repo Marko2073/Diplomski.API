@@ -6,17 +6,21 @@ using Diplomski.Application.Logging;
 using Diplomski.Application.UseCases.Commands.Brand;
 using Diplomski.Application.UseCases.Commands.Category;
 using Diplomski.Application.UseCases.Commands.Model;
+using Diplomski.Application.UseCases.Commands.Specification;
 using Diplomski.Application.UseCases.Queries.Brand;
 using Diplomski.Application.UseCases.Queries.Category;
 using Diplomski.Application.UseCases.Queries.Model;
+using Diplomski.Application.UseCases.Queries.Specification;
 using Diplomski.Implementation;
 using Diplomski.Implementation.Logging;
 using Diplomski.Implementation.UseCases.Commands.Brand;
 using Diplomski.Implementation.UseCases.Commands.Category;
 using Diplomski.Implementation.UseCases.Commands.Model;
+using Diplomski.Implementation.UseCases.Commands.Specification;
 using Diplomski.Implementation.UseCases.Queries.Brand;
 using Diplomski.Implementation.UseCases.Queries.Category;
 using Diplomski.Implementation.UseCases.Queries.Model;
+using Diplomski.Implementation.UseCases.Queries.Specification;
 using Diplomski.Implementation.Validators;
 using System.IdentityModel.Tokens.Jwt;
 
@@ -51,7 +55,6 @@ namespace AspProjekat2024.API.Core
             services.AddTransient<UpdateCategoryDtoValidator>();
             services.AddTransient<IDeleteCategoryCommand, EfDeleteCategoryCommand>();
 
-
             //models
 
             services.AddTransient<IGetModelsQuery, EfGetModelsQuery>();
@@ -62,6 +65,15 @@ namespace AspProjekat2024.API.Core
             services.AddTransient<UpdateModelDtoValidator>();
             services.AddTransient<IDeleteModelCommand, EfDeleteModelCommand>();
 
+            //specifications
+
+            services.AddTransient<IGetSpecificationsQuery, EfGetSpecificationsQuery>();
+            services.AddTransient<IGetOneSpecificationQuery, EfGetOneSpecificationQuery>();
+            services.AddTransient<ICreateSpecificationCommand, EfCreateSpecificationCommand>();
+            services.AddTransient<CreateSpecificationDtoValidator>();
+            services.AddTransient<IUpdateSpecificationCommand, EfUpdateSpecificationCommand>();
+            services.AddTransient<UpdateSpecificationDtoValidator>();
+            services.AddTransient<IDeleteSpecificationCommand, EfDeleteSpecificationCommand>();
 
 
 
