@@ -44,6 +44,9 @@ namespace Diplomski.API.Core
                 if (exception is EntityNotFoundException)
                 {
                     httpContext.Response.StatusCode = 404;
+                    var body = new { error = exception.Message };
+
+                    await httpContext.Response.WriteAsJsonAsync(body);
                     return;
                 }
 

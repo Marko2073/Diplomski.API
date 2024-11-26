@@ -23,10 +23,22 @@ namespace AspProjekat2024.API.Core
             services.AddTransient<IExceptionLogger, ConsoleExceptionLogger>();
             services.AddTransient<IUseCaseLogger, EfUseCaseLogger>();
             services.AddTransient<IExLogger, DbExceptionLogger>();
+
             services.AddTransient<IGetBrandsQuery, EfGetBrandsQuery>();
             services.AddTransient<IGetOneBrandQuery, EfGetOneBrandQuery>();
             services.AddTransient<ICreateBrandCommand, EfCreateBrandCommand>();
             services.AddTransient<CreateBrandDtoValidator>();
+            services.AddTransient<IUpdateBrandCommand, EfUpdateBrandCommand>();
+            services.AddTransient<UpdateBrandDtoValidator>();
+            services.AddTransient<IDeleteBrandCommand, EfDeleteBrandCommand>();
+            
+            services.AddTransient<IGetCategoriesQuery, EfGetCategoriesQuery>();
+            
+            services.AddTransient<ICreateCategoryCommand, EfCreateCategoryCommand>();
+            services.AddTransient<CreateCategoryDtoValidator>();
+
+            services.AddTransient<IGetModelsQuery, EfGetModelsQuery>();
+
 
 
 

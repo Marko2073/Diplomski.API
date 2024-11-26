@@ -1,5 +1,7 @@
 ﻿using Diplomski.Application.Dto.Creates;
+using Diplomski.Application.Dto.Delete;
 using Diplomski.Application.Dto.Searches;
+using Diplomski.Application.Dto.Updates;
 using Diplomski.Application.UseCases.Commands;
 using Diplomski.Application.UseCases.Queries;
 using Diplomski.Implementation;
@@ -42,6 +44,26 @@ namespace Diplomski.API.Controllers
             return StatusCode(201);
 
 
+
+        }
+        // PUT api/<BrandsController>/5
+        [HttpPut("{id}")]
+        [Authorize]
+        public IActionResult Put(int id, [FromBody] UpdateBrandDto dto, [FromServices] IUpdateBrandCommand command)
+        {
+            dto.Id = id;
+            _handler.HandleCommand(command, dto);
+            return StatusCode(204);
+
+        }
+
+        // DELETE api/<BrandsController>/5
+        [HttpDelete("{id}")]
+        [Authorize]
+        public IActionResult Delete(int id, [FromServices] IDeleteBrandCommand command)
+        {
+            _handler.HandleCommand(command, id);
+            return StatusCode(204);
 
         }
     }
