@@ -29,11 +29,12 @@ namespace Diplomski.API.Controllers
         {
             return Ok(_handler.HandleQuery(query, search));
         }
+
         [HttpGet]
         [Route("{id}")]
         public IActionResult Get(int id, [FromServices] IGetOneBrandQuery query)
         {
-            return Ok(_handler.HandleQuery(query, new IdSearch { Id = id }));
+            return Ok(_handler.HandleQuery(query, id));
         }
 
         [HttpPost]

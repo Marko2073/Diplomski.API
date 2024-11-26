@@ -33,9 +33,11 @@ namespace AspProjekat2024.API.Core
             services.AddTransient<IDeleteBrandCommand, EfDeleteBrandCommand>();
             
             services.AddTransient<IGetCategoriesQuery, EfGetCategoriesQuery>();
-            
             services.AddTransient<ICreateCategoryCommand, EfCreateCategoryCommand>();
             services.AddTransient<CreateCategoryDtoValidator>();
+            services.AddTransient<IGetOneCategoryQuery, EfGetOneCategoryQuery>();
+
+
 
             services.AddTransient<IGetModelsQuery, EfGetModelsQuery>();
 

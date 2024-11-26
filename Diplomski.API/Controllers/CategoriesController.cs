@@ -27,11 +27,11 @@ namespace Diplomski.API.Controllers
             return Ok(_handler.HandleQuery(query, search));
         }
 
-        // GET api/<CategoriesController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet]
+        [Route("{id}")]
+        public IActionResult Get(int id, [FromServices] IGetOneCategoryQuery query)
         {
-            return "value";
+            return Ok(_handler.HandleQuery(query, id));
         }
 
         // POST api/<CategoriesController>

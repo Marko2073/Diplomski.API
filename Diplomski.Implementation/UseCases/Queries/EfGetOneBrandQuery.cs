@@ -1,5 +1,6 @@
 ﻿using Diplomski.Application.Dto.Gets;
 using Diplomski.Application.Dto.Searches;
+using Diplomski.Application.Exceptions;
 using Diplomski.Application.UseCases.Queries;
 using Diplomski.DataAccess;
 using System;
@@ -22,17 +23,19 @@ namespace Diplomski.Implementation.UseCases.Queries
 
         public string Description => "Single Brand ";
 
-        public IEnumerable<BrandsDto> Execute(IdSearch search)
+        public BrandsDto Execute(int search)
         {
-            var query = Context.Brands.AsQueryable();
-            query = query.Where(x => x.Id == search.Id);
-
-            return query.Select(x => new BrandsDto
+            var brand = Context.Brands.Where(x => x.Id == search).Select(x=>new BrandsDto
             {
-                Id = x.Id,
+                Id= x.Id,
                 Name = x.Name
-            }).ToList();
+            }).FirstOrDefault();
 
+            if(brand==null)
+            {
+                throw new EntityNotFoundException(nameof(Domain.Brand), search);
+            }
+            return brand;
             
         }
     }
