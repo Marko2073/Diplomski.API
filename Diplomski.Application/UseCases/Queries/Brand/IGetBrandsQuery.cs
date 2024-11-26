@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Diplomski.Application.UseCases.Queries
+namespace Diplomski.Application.UseCases.Queries.Brand
 {
-    public interface IGetCategoriesQuery: IQuery<BaseSearch, IEnumerable<CategoryDto>>
+    public interface IGetBrandsQuery : IQuery<BaseSearch, IEnumerable<BrandsDto>>
     {
     }
 }

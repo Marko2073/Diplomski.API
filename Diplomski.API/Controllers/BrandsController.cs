@@ -2,8 +2,8 @@
 using Diplomski.Application.Dto.Delete;
 using Diplomski.Application.Dto.Searches;
 using Diplomski.Application.Dto.Updates;
-using Diplomski.Application.UseCases.Commands;
-using Diplomski.Application.UseCases.Queries;
+using Diplomski.Application.UseCases.Commands.Brand;
+using Diplomski.Application.UseCases.Queries.Brand;
 using Diplomski.Implementation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -60,7 +60,7 @@ namespace Diplomski.API.Controllers
 
         // DELETE api/<BrandsController>/5
         [HttpDelete("{id}")]
-        [Authorize]
+        //[Authorize]
         public IActionResult Delete(int id, [FromServices] IDeleteBrandCommand command)
         {
             _handler.HandleCommand(command, id);

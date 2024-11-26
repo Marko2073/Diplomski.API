@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Diplomski.Application.UseCases.Queries
+namespace Diplomski.Application.UseCases.Queries.Category
 {
-    public interface IGetModelsQuery : IQuery<BaseSearch, IEnumerable<ModelDto>>
+    public interface IGetCategoriesQuery : IQuery<BaseSearch, IEnumerable<CategoryDto>>
     {
     }
 }

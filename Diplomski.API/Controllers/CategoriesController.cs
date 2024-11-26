@@ -1,7 +1,9 @@
 ﻿using Diplomski.Application.Dto.Creates;
 using Diplomski.Application.Dto.Searches;
-using Diplomski.Application.UseCases.Commands;
-using Diplomski.Application.UseCases.Queries;
+using Diplomski.Application.Dto.Updates;
+using Diplomski.Application.UseCases.Commands.Brand;
+using Diplomski.Application.UseCases.Commands.Category;
+using Diplomski.Application.UseCases.Queries.Category;
 using Diplomski.Implementation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -36,7 +38,7 @@ namespace Diplomski.API.Controllers
 
         // POST api/<CategoriesController>
         [HttpPost]
-        [Authorize]
+        //[Authorize]
         public IActionResult Post([FromBody] CreateCategoryDto dto, [FromServices] ICreateCategoryCommand command)
         {
             _handler.HandleCommand(command, dto);
@@ -48,14 +50,23 @@ namespace Diplomski.API.Controllers
 
         // PUT api/<CategoriesController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [Authorize]
+        public IActionResult Put(int id, [FromBody] UpdateCategoryDto dto, [FromServices] IUpdateCategoryCommand command)
         {
+            dto.Id = id;
+            _handler.HandleCommand(command, dto);
+            return StatusCode(204);
+
         }
 
         // DELETE api/<CategoriesController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        //[Authorize]
+        public IActionResult Delete(int id, [FromServices] IDeleteCategoryCommand command)
         {
+            _handler.HandleCommand(command, id);
+            return StatusCode(204);
+
         }
     }
 }

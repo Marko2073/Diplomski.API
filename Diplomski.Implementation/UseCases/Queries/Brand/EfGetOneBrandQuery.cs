@@ -1,7 +1,7 @@
 ﻿using Diplomski.Application.Dto.Gets;
 using Diplomski.Application.Dto.Searches;
 using Diplomski.Application.Exceptions;
-using Diplomski.Application.UseCases.Queries;
+using Diplomski.Application.UseCases.Queries.Brand;
 using Diplomski.DataAccess;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Diplomski.Implementation.UseCases.Queries
+namespace Diplomski.Implementation.UseCases.Queries.Brand
 {
     public class EfGetOneBrandQuery : EfUseCase, IGetOneBrandQuery
     {
@@ -25,18 +25,18 @@ namespace Diplomski.Implementation.UseCases.Queries
 
         public BrandsDto Execute(int search)
         {
-            var brand = Context.Brands.Where(x => x.Id == search).Select(x=>new BrandsDto
+            var brand = Context.Brands.Where(x => x.Id == search).Select(x => new BrandsDto
             {
-                Id= x.Id,
+                Id = x.Id,
                 Name = x.Name
             }).FirstOrDefault();
 
-            if(brand==null)
+            if (brand == null)
             {
                 throw new EntityNotFoundException(nameof(Domain.Brand), search);
             }
             return brand;
-            
+
         }
     }
 }

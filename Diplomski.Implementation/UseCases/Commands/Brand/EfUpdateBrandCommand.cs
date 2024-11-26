@@ -1,6 +1,6 @@
 ﻿using Diplomski.Application.Dto.Updates;
 using Diplomski.Application.Exceptions;
-using Diplomski.Application.UseCases.Commands;
+using Diplomski.Application.UseCases.Commands.Brand;
 using Diplomski.DataAccess;
 using Diplomski.Implementation.Validators;
 using FluentValidation;
@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Diplomski.Implementation.UseCases.Commands
+namespace Diplomski.Implementation.UseCases.Commands.Brand
 {
     public class EfUpdateBrandCommand : EfUseCase, IUpdateBrandCommand
     {
@@ -40,7 +40,7 @@ namespace Diplomski.Implementation.UseCases.Commands
             brand.Name = request.Name;
 
             Context.SaveChanges();
-            
+
         }
     }
 }

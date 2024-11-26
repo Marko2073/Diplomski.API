@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Diplomski.Application.UseCases.Commands
+namespace Diplomski.Application.UseCases.Commands.Model
 {
-    public interface IUpdateBrandCommand: ICommand<UpdateBrandDto>
+    public interface IUpdateModelCommand : ICommand<UpdateModelDto>
     {
     }
 }

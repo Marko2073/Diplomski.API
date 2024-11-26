@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Diplomski.Application.UseCases.Commands
+namespace Diplomski.Application.UseCases.Commands.Model
 {
-    public interface ICreateCategoryCommand : ICommand<CreateCategoryDto>
+    public interface ICreateModelCommand : ICommand<CreateModelDto>
     {
 
     }

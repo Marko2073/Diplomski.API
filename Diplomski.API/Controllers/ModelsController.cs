@@ -1,6 +1,12 @@
-﻿using Diplomski.Application.Dto.Searches;
-using Diplomski.Application.UseCases.Queries;
+﻿using Diplomski.Application.Dto.Creates;
+using Diplomski.Application.Dto.Searches;
+using Diplomski.Application.Dto.Updates;
+using Diplomski.Application.UseCases.Commands.Category;
+using Diplomski.Application.UseCases.Commands.Model;
+using Diplomski.Application.UseCases.Queries.Brand;
+using Diplomski.Application.UseCases.Queries.Model;
 using Diplomski.Implementation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Reflection.Metadata;
 
@@ -28,28 +34,44 @@ namespace Diplomski.API.Controllers
         }
 
         // GET api/<ModelsController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet]
+        [Route("{id}")]
+        public IActionResult Get(int id, [FromServices] IGetOneModelQuery query)
         {
-            return "value";
+            return Ok(_handler.HandleQuery(query, id));
         }
 
         // POST api/<ModelsController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        //[Authorize]
+        public IActionResult Post([FromBody] CreateModelDto dto, [FromServices] ICreateModelCommand command)
         {
+            _handler.HandleCommand(command, dto);
+            return StatusCode(201);
+
+
+
         }
 
         // PUT api/<ModelsController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        //[Authorize]
+        public IActionResult Put(int id, [FromBody] UpdateModelDto dto, [FromServices] IUpdateModelCommand command)
         {
+            dto.Id = id;
+            _handler.HandleCommand(command, dto);
+            return StatusCode(204);
+
         }
 
         // DELETE api/<ModelsController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        //[Authorize]
+        public IActionResult Delete(int id, [FromServices] IDeleteModelCommand command)
         {
+            _handler.HandleCommand(command, id);
+            return StatusCode(204);
+
         }
     }
 }

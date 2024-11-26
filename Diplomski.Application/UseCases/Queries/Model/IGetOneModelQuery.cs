@@ -1,14 +1,13 @@
 ﻿using Diplomski.Application.Dto.Gets;
-using Diplomski.Application.Dto.Searches;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Diplomski.Application.UseCases.Queries
+namespace Diplomski.Application.UseCases.Queries.Model
 {
-    public interface IGetBrandsQuery : IQuery<BaseSearch, IEnumerable<BrandsDto>>
+    public interface IGetOneModelQuery : IQuery<int, ModelDto>
     {
     }
 }

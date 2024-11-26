@@ -1,6 +1,6 @@
 ﻿using Diplomski.Application.Dto.Creates;
 using Diplomski.Application.Exceptions;
-using Diplomski.Application.UseCases.Commands;
+using Diplomski.Application.UseCases.Commands.Category;
 using Diplomski.DataAccess;
 using Diplomski.Implementation.Validators;
 using FluentValidation;
@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Diplomski.Implementation.UseCases.Commands
+namespace Diplomski.Implementation.UseCases.Commands.Category
 {
     public class EfCreateCategoryCommand : EfUseCase, ICreateCategoryCommand
     {
@@ -29,7 +29,7 @@ namespace Diplomski.Implementation.UseCases.Commands
         public void Execute(CreateCategoryDto request)
         {
             _validator.ValidateAndThrow(request);
-            
+
 
             Context.Categories.Add(new Domain.Category
             {
@@ -38,8 +38,8 @@ namespace Diplomski.Implementation.UseCases.Commands
             });
 
             Context.SaveChanges();
-            
-            
+
+
         }
     }
 }

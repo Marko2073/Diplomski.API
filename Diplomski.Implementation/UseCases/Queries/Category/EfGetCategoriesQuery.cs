@@ -1,6 +1,6 @@
 ﻿using Diplomski.Application.Dto.Gets;
 using Diplomski.Application.Dto.Searches;
-using Diplomski.Application.UseCases.Queries;
+using Diplomski.Application.UseCases.Queries.Category;
 using Diplomski.DataAccess;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Diplomski.Implementation.UseCases.Queries
+namespace Diplomski.Implementation.UseCases.Queries.Category
 {
     public class EfGetCategoriesQuery : EfUseCase, IGetCategoriesQuery
     {
@@ -40,7 +40,7 @@ namespace Diplomski.Implementation.UseCases.Queries
             }).ToList();
 
 
-            
+
         }
     }
 }

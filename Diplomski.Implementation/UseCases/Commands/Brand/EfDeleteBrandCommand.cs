@@ -1,5 +1,5 @@
 ﻿using Diplomski.Application.Exceptions;
-using Diplomski.Application.UseCases.Commands;
+using Diplomski.Application.UseCases.Commands.Brand;
 using Diplomski.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Diplomski.Implementation.UseCases.Commands
+namespace Diplomski.Implementation.UseCases.Commands.Brand
 {
     public class EfDeleteBrandCommand : EfUseCase, IDeleteBrandCommand
     {
@@ -25,7 +25,7 @@ namespace Diplomski.Implementation.UseCases.Commands
         public void Execute(int request)
         {
             var brand = Context.Brands.Include(x => x.Models).FirstOrDefault(x => x.Id == request);
-            
+
             if (brand == null)
             {
                 throw new EntityNotFoundException(typeof(Domain.Brand).ToString(), request);
@@ -38,7 +38,7 @@ namespace Diplomski.Implementation.UseCases.Commands
 
             Context.Brands.Remove(brand);
             Context.SaveChanges();
-            
+
         }
     }
 }

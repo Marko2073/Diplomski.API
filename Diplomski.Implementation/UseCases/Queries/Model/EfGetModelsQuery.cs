@@ -1,6 +1,6 @@
 ﻿using Diplomski.Application.Dto.Gets;
 using Diplomski.Application.Dto.Searches;
-using Diplomski.Application.UseCases.Queries;
+using Diplomski.Application.UseCases.Queries.Model;
 using Diplomski.DataAccess;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Diplomski.Implementation.UseCases.Queries
+namespace Diplomski.Implementation.UseCases.Queries.Model
 {
     public class EfGetModelsQuery : EfUseCase, IGetModelsQuery
     {
@@ -16,7 +16,7 @@ namespace Diplomski.Implementation.UseCases.Queries
         {
         }
 
-        public int Id => 55;
+        public int Id => 11;
 
         public string Name => "Search Models";
 
@@ -41,7 +41,7 @@ namespace Diplomski.Implementation.UseCases.Queries
 
             }).ToList();
 
-            
+
         }
     }
 }

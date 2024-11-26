@@ -5,9 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Diplomski.Application.UseCases.Commands
+namespace Diplomski.Application.UseCases.Commands.Category
 {
-    public interface ICreateBrandCommand: ICommand<CreateBrandDto>
+    public interface ICreateCategoryCommand : ICommand<CreateCategoryDto>
     {
+
     }
 }

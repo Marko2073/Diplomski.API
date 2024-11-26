@@ -1,5 +1,5 @@
 ﻿using Diplomski.Application.Dto.Creates;
-using Diplomski.Application.UseCases.Commands;
+using Diplomski.Application.UseCases.Commands.Brand;
 using Diplomski.DataAccess;
 using Diplomski.Implementation.Validators;
 using FluentValidation;
@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Diplomski.Implementation.UseCases.Commands
+namespace Diplomski.Implementation.UseCases.Commands.Brand
 {
     public class EfCreateBrandCommand : EfUseCase, ICreateBrandCommand
     {
@@ -35,7 +35,7 @@ namespace Diplomski.Implementation.UseCases.Commands
             });
 
             Context.SaveChanges();
-            
+
         }
     }
 }
