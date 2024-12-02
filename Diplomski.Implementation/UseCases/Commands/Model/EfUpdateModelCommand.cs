@@ -39,6 +39,7 @@ namespace Diplomski.Implementation.UseCases.Commands.Model
             model.Name = request.Name;
             model.BrandId = request.BrandId;
             model.CategoryId = request.CategoryId;
+            model.UpdatedAt = DateTime.UtcNow;
 
             Context.SaveChanges();
 

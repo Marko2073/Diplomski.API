@@ -40,6 +40,7 @@ namespace Diplomski.Implementation.UseCases.Commands.Category
 
             category.Name = request.Name;
             category.ParentId = request.ParentId;
+            category.UpdatedAt= DateTime.UtcNow;
 
             Context.SaveChanges();
 

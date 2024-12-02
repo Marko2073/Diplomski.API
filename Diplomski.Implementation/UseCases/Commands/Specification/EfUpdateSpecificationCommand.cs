@@ -39,6 +39,7 @@ namespace Diplomski.Implementation.UseCases.Commands.Specification
 
             specification.Name = request.Name;
             specification.ParentId = request.ParentId;
+            specification.UpdatedAt = DateTime.UtcNow;
 
             Context.SaveChanges();
         }

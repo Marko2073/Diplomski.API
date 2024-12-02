@@ -38,6 +38,7 @@ namespace Diplomski.Implementation.UseCases.Commands.Brand
             }
 
             brand.Name = request.Name;
+            brand.UpdatedAt = DateTime.UtcNow;
 
             Context.SaveChanges();
 
