@@ -10,6 +10,7 @@ using Diplomski.Application.UseCases.Commands.Specification;
 using Diplomski.Application.UseCases.Queries.Brand;
 using Diplomski.Application.UseCases.Queries.Category;
 using Diplomski.Application.UseCases.Queries.Model;
+using Diplomski.Application.UseCases.Queries.Role;
 using Diplomski.Application.UseCases.Queries.Specification;
 using Diplomski.Implementation;
 using Diplomski.Implementation.Logging;
@@ -20,6 +21,7 @@ using Diplomski.Implementation.UseCases.Commands.Specification;
 using Diplomski.Implementation.UseCases.Queries.Brand;
 using Diplomski.Implementation.UseCases.Queries.Category;
 using Diplomski.Implementation.UseCases.Queries.Model;
+using Diplomski.Implementation.UseCases.Queries.Role;
 using Diplomski.Implementation.UseCases.Queries.Specification;
 using Diplomski.Implementation.Validators;
 using System.IdentityModel.Tokens.Jwt;
@@ -74,6 +76,11 @@ namespace AspProjekat2024.API.Core
             services.AddTransient<IUpdateSpecificationCommand, EfUpdateSpecificationCommand>();
             services.AddTransient<UpdateSpecificationDtoValidator>();
             services.AddTransient<IDeleteSpecificationCommand, EfDeleteSpecificationCommand>();
+
+            //roles
+
+            services.AddTransient<IGetRolesQuery, EfGetRolesQuery>();
+            services.AddTransient<IGetOneRoleQuery, EfGetOneRoleQuery>();
 
 
 
