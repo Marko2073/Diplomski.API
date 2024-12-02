@@ -38,7 +38,7 @@ namespace Diplomski.API.Controllers
         }
 
         [HttpPost]
-        //[Authorize]
+        [Authorize]
         public IActionResult Post([FromBody] CreateSpecificationDto dto, [FromServices] ICreateSpecificationCommand command)
         {
             _handler.HandleCommand(command, dto);
@@ -49,7 +49,7 @@ namespace Diplomski.API.Controllers
         }
 
         [HttpPut("{id}")]
-        //[Authorize]
+        [Authorize]
         public IActionResult Put(int id, [FromBody] UpdateSpecificationDto dto, [FromServices] IUpdateSpecificationCommand command)
         {
             dto.Id = id;
@@ -59,7 +59,7 @@ namespace Diplomski.API.Controllers
         }
 
         [HttpDelete("{id}")]
-        //[Authorize]
+        [Authorize]
         public IActionResult Delete(int id, [FromServices] IDeleteSpecificationCommand command)
         {
             _handler.HandleCommand(command, id);

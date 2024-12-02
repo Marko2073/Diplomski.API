@@ -38,7 +38,7 @@ namespace Diplomski.API.Controllers
 
         // POST api/<CategoriesController>
         [HttpPost]
-        //[Authorize]
+        [Authorize]
         public IActionResult Post([FromBody] CreateCategoryDto dto, [FromServices] ICreateCategoryCommand command)
         {
             _handler.HandleCommand(command, dto);
@@ -61,7 +61,7 @@ namespace Diplomski.API.Controllers
 
         // DELETE api/<CategoriesController>/5
         [HttpDelete("{id}")]
-        //[Authorize]
+        [Authorize]
         public IActionResult Delete(int id, [FromServices] IDeleteCategoryCommand command)
         {
             _handler.HandleCommand(command, id);

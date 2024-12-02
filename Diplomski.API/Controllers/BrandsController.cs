@@ -60,7 +60,7 @@ namespace Diplomski.API.Controllers
 
         // DELETE api/<BrandsController>/5
         [HttpDelete("{id}")]
-        //[Authorize]
+        [Authorize]
         public IActionResult Delete(int id, [FromServices] IDeleteBrandCommand command)
         {
             _handler.HandleCommand(command, id);
