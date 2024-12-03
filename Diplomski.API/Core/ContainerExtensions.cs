@@ -3,11 +3,13 @@ using AspProjekat2024.Implementation.Logging;
 using Diplomski.API.Core;
 using Diplomski.Application;
 using Diplomski.Application.Logging;
+using Diplomski.Application.Mail;
 using Diplomski.Application.UseCases.Commands.Brand;
 using Diplomski.Application.UseCases.Commands.Category;
 using Diplomski.Application.UseCases.Commands.Model;
 using Diplomski.Application.UseCases.Commands.Role;
 using Diplomski.Application.UseCases.Commands.Specification;
+using Diplomski.Application.UseCases.Commands.User;
 using Diplomski.Application.UseCases.Queries.Brand;
 using Diplomski.Application.UseCases.Queries.Category;
 using Diplomski.Application.UseCases.Queries.Model;
@@ -20,6 +22,7 @@ using Diplomski.Implementation.UseCases.Commands.Category;
 using Diplomski.Implementation.UseCases.Commands.Model;
 using Diplomski.Implementation.UseCases.Commands.Role;
 using Diplomski.Implementation.UseCases.Commands.Specification;
+using Diplomski.Implementation.UseCases.Commands.User;
 using Diplomski.Implementation.UseCases.Queries.Brand;
 using Diplomski.Implementation.UseCases.Queries.Category;
 using Diplomski.Implementation.UseCases.Queries.Model;
@@ -89,6 +92,10 @@ namespace AspProjekat2024.API.Core
             services.AddTransient<UpdateRoleDtoValidator>();
             services.AddTransient<IDeleteRoleCommand, EfDeleteRoleCommand>();
 
+            //users
+
+            services.AddTransient<ICreateUserCommand, EfCreateUserCommand>();
+            services.AddTransient<RegisterUserDtoValidator>();
 
 
 
@@ -97,8 +104,12 @@ namespace AspProjekat2024.API.Core
 
 
 
-            //services.AddTransient<IEmailService>(provider =>
-            //    new EmailService("smtp.gmail.com", 587, "marko.markovic.33.21@ict.edu.rs", "huvumdbwlqayjfzm"));
+
+
+
+
+            services.AddTransient<IEmailService>(provider =>
+                new EmailService("smtp.gmail.com", 587, "marko.markovic.33.21@ict.edu.rs", "huvumdbwlqayjfzm"));
         }
 
         public static Guid? GetTokenId(this HttpRequest request)

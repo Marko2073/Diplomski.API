@@ -33,7 +33,7 @@ namespace Diplomski.API.Core
             {
                 throw new UnauthorizedAccessException();
             }
-            if (password!= user.Password)
+            if (!BCrypt.Net.BCrypt.Verify(password, user.Password))
             {
                 throw new UnauthorizedAccessException();
             }

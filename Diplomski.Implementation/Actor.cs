@@ -32,6 +32,6 @@ namespace Diplomski.Implementation
 
         public string LastName => "unauthorized";
 
-        public int RoleId { get; set; }=3;
+        public int RoleId { get; set; }=0;
     }
 }

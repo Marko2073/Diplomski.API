@@ -39,7 +39,7 @@ namespace Diplomski.API.Controllers
         }
 
         [HttpPost]
-        //[Authorize]
+        [Authorize]
         public IActionResult Post([FromBody] CreateRoleDto dto, [FromServices] ICreateRoleCommand command)
         {
             _handler.HandleCommand(command, dto);
@@ -47,7 +47,7 @@ namespace Diplomski.API.Controllers
         }
         // PUT api/<RolesController>/5
         [HttpPut("{id}")]
-        //[Authorize]
+        [Authorize]
         public IActionResult Put(int id, [FromBody] UpdateRoleDto dto, [FromServices] IUpdateRoleCommand command)
         {
             dto.Id = id;
@@ -59,7 +59,7 @@ namespace Diplomski.API.Controllers
 
         // DELETE api/<RolesController>/5
         [HttpDelete("{id}")]
-        //[Authorize]
+        [Authorize]
         public IActionResult Delete(int id, [FromServices] IDeleteRoleCommand command)
         {
             _handler.HandleCommand(command, id);

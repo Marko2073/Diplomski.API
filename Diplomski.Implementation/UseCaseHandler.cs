@@ -73,11 +73,11 @@ namespace Diplomski.Implementation
         private void HandleCrossCuttingConcerns(IUseCase useCase, object data)
         {
 
-            
-            //if (!HasPermissionForUseCase(useCase))
-            //{
-            //    throw new UnauthorizedAccessException($"User '{_actor.FirstName}' is not authorized to execute use case: {useCase.Name}");
-            //}
+
+            if (!HasPermissionForUseCase(useCase))
+            {
+                throw new UnauthorizedAccessException($"User '{_actor.FirstName}' is not authorized to execute use case: {useCase.Name}");
+            }
 
 
 
@@ -93,6 +93,18 @@ namespace Diplomski.Implementation
 
         private bool HasPermissionForUseCase(IUseCase useCase)
         {
+            if (_actor.FirstName == "unauthorized")
+            {
+                var allowedUseCases = new List<int>
+                {
+                    6
+
+
+                };
+
+                return allowedUseCases.Contains(useCase.Id);
+
+            }
             if (_actor.RoleId == 2) 
             {
                 return true; 
