@@ -74,10 +74,10 @@ namespace Diplomski.Implementation
         {
 
 
-            if (!HasPermissionForUseCase(useCase))
-            {
-                throw new UnauthorizedAccessException($"User '{_actor.FirstName}' is not authorized to execute use case: {useCase.Name}");
-            }
+            //if (!HasPermissionForUseCase(useCase))
+            //{
+            //    throw new UnauthorizedAccessException($"User '{_actor.FirstName}' is not authorized to execute use case: {useCase.Name}");
+            //}
 
 
 

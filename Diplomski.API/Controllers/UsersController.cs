@@ -1,6 +1,8 @@
 ﻿using Diplomski.Application.Dto.Creates;
+using Diplomski.Application.Dto.Searches;
 using Diplomski.Application.UseCases.Commands.Brand;
 using Diplomski.Application.UseCases.Commands.User;
+using Diplomski.Application.UseCases.Queries.User;
 using Diplomski.Implementation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -21,16 +23,16 @@ namespace Diplomski.API.Controllers
         }
         // GET: api/<UsersController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult Get([FromQuery] BaseSearch search, [FromServices] IGetUsersQuery query)
         {
-            return new string[] { "value1", "value2" };
+            return Ok(_handler.HandleQuery(query, search));
         }
 
         // GET api/<UsersController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public IActionResult Get(int id, [FromServices] IGetOneUserQuery query)
         {
-            return "value";
+            return Ok(_handler.HandleQuery(query, id));
         }
 
         // POST api/<UsersController>
