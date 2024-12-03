@@ -72,11 +72,14 @@ namespace Diplomski.Implementation
         }
         private void HandleCrossCuttingConcerns(IUseCase useCase, object data)
         {
+
             
-            //if (!_actor.AllowedUseCases.Contains(useCase.Id))
+            //if (!HasPermissionForUseCase(useCase))
             //{
-            //    throw new UnauthorizedAccessException();
+            //    throw new UnauthorizedAccessException($"User '{_actor.FirstName}' is not authorized to execute use case: {useCase.Name}");
             //}
+
+
 
             var log = new UseCaseLog
             {
@@ -86,6 +89,30 @@ namespace Diplomski.Implementation
             };
 
             _logger.Log(log);
+        }
+
+        private bool HasPermissionForUseCase(IUseCase useCase)
+        {
+            if (_actor.RoleId == 2) 
+            {
+                return true; 
+            }
+
+            
+            if (_actor.RoleId == 3)
+            {
+                
+                var allowedUseCases = new List<int>
+                {
+                    1,2
+                
+                   
+                };
+
+                return allowedUseCases.Contains(useCase.Id);
+            }
+
+            return false;
         }
     }
 }
