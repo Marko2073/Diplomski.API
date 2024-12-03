@@ -24,4 +24,8 @@
     <ProjectReference Include="..\Diplomski.Implementation\Diplomski.Implementation.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\images\" />
+  </ItemGroup>
+
 </Project>

@@ -1,5 +1,6 @@
 ﻿
 using AspProjekat2024.Implementation.Logging;
+using AspProjekat2024.Implementation.Validators;
 using Diplomski.API.Core;
 using Diplomski.Application;
 using Diplomski.Application.Logging;
@@ -101,6 +102,9 @@ namespace AspProjekat2024.API.Core
             services.AddTransient<IGetOneUserQuery, EfGetOneUserQuery>();
             services.AddTransient<ICreateUserCommand, EfCreateUserCommand>();
             services.AddTransient<RegisterUserDtoValidator>();
+            services.AddTransient<IUpdateUserCommand, EfUpdateUserCommand>();
+            services.AddTransient<UpdateUserDtoValidator>();
+            services.AddTransient<IDeleteUserCommand, EfDeleteUserCommand>();
 
 
 

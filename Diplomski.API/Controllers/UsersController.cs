@@ -1,6 +1,8 @@
 ﻿using Diplomski.Application.Dto.Creates;
 using Diplomski.Application.Dto.Searches;
+using Diplomski.Application.Dto.Updates;
 using Diplomski.Application.UseCases.Commands.Brand;
+using Diplomski.Application.UseCases.Commands.Role;
 using Diplomski.Application.UseCases.Commands.User;
 using Diplomski.Application.UseCases.Queries.User;
 using Diplomski.Implementation;
@@ -47,14 +49,25 @@ namespace Diplomski.API.Controllers
         }
         // PUT api/<UsersController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        //[Authorize]
+        [Consumes("multipart/form-data")]
+
+        public IActionResult Put(int id, [FromForm] UpdateUserDto dto, [FromServices] IUpdateUserCommand command)
         {
+            dto.Id = id;
+            _handler.HandleCommand(command, dto);
+
+            return NoContent();
         }
 
         // DELETE api/<UsersController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        //[Authorize]
+        public IActionResult Delete(int id, [FromServices] IDeleteUserCommand command)
         {
+            _handler.HandleCommand(command, id);
+            return StatusCode(204);
+
         }
     }
 }
