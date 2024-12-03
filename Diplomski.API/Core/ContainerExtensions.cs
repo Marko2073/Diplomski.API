@@ -87,6 +87,7 @@ namespace AspProjekat2024.API.Core
             services.AddTransient<CreateRoleDtoValidator>();
             services.AddTransient<IUpdateRoleCommand, EfUpdateRoleCommand>();
             services.AddTransient<UpdateRoleDtoValidator>();
+            services.AddTransient<IDeleteRoleCommand, EfDeleteRoleCommand>();
 
 
 

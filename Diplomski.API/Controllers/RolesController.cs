@@ -55,12 +55,16 @@ namespace Diplomski.API.Controllers
             return StatusCode(204);
 
         }
-    
+
 
         // DELETE api/<RolesController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        //[Authorize]
+        public IActionResult Delete(int id, [FromServices] IDeleteRoleCommand command)
         {
+            _handler.HandleCommand(command, id);
+            return StatusCode(204);
+
         }
     }
 }
