@@ -26,7 +26,7 @@ namespace Diplomski.Implementation.UseCases.Commands.User
         {
             var user = Context.Users.Include(x => x.Carts).FirstOrDefault(x => x.Id == request);
 
-            //var user=Context.Users.Where(x=>x.Id==request).FirstOrDefault();
+            
 
 
             if (user == null)
