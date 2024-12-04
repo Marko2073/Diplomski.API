@@ -14,6 +14,7 @@ using Diplomski.Application.UseCases.Commands.User;
 using Diplomski.Application.UseCases.Queries.Brand;
 using Diplomski.Application.UseCases.Queries.Category;
 using Diplomski.Application.UseCases.Queries.Model;
+using Diplomski.Application.UseCases.Queries.ModelVersion;
 using Diplomski.Application.UseCases.Queries.Role;
 using Diplomski.Application.UseCases.Queries.Specification;
 using Diplomski.Application.UseCases.Queries.User;
@@ -28,6 +29,7 @@ using Diplomski.Implementation.UseCases.Commands.User;
 using Diplomski.Implementation.UseCases.Queries.Brand;
 using Diplomski.Implementation.UseCases.Queries.Category;
 using Diplomski.Implementation.UseCases.Queries.Model;
+using Diplomski.Implementation.UseCases.Queries.ModelVersion;
 using Diplomski.Implementation.UseCases.Queries.Role;
 using Diplomski.Implementation.UseCases.Queries.Specification;
 using Diplomski.Implementation.UseCases.Queries.User;
@@ -105,6 +107,12 @@ namespace AspProjekat2024.API.Core
             services.AddTransient<IUpdateUserCommand, EfUpdateUserCommand>();
             services.AddTransient<UpdateUserDtoValidator>();
             services.AddTransient<IDeleteUserCommand, EfDeleteUserCommand>();
+
+
+            //model versions
+
+            services.AddTransient<IGetModelVersionsQuery, EfGetModelVersionsQuery>();
+            services.AddTransient<IGetOneModelVersionQuery, EfGetOneModelVersionQuery>();
 
 
 
