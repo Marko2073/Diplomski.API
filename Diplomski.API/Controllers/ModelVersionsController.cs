@@ -1,11 +1,15 @@
 ﻿using Diplomski.Application.Dto.Creates;
 using Diplomski.Application.Dto.Searches;
+using Diplomski.Application.Dto.Updates;
 using Diplomski.Application.UseCases.Commands.Model;
 using Diplomski.Application.UseCases.Commands.ModelVersion;
+using Diplomski.Application.UseCases.Commands.Role;
+using Diplomski.Application.UseCases.Commands.Specification;
 using Diplomski.Application.UseCases.Queries.Brand;
 using Diplomski.Application.UseCases.Queries.Model;
 using Diplomski.Application.UseCases.Queries.ModelVersion;
 using Diplomski.Implementation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -53,14 +57,23 @@ namespace Diplomski.API.Controllers
 
         // PUT api/<ModelVersionsController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        //[Authorize]
+        public IActionResult Put(int id, [FromBody] UpdateModelVersionDto dto, [FromServices] IUpdateModelVersionCommand command)
         {
+            dto.Id = id;
+            _handler.HandleCommand(command, dto);
+            return StatusCode(204);
+
         }
 
         // DELETE api/<ModelVersionsController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        //[Authorize]
+        public IActionResult Delete(int id, [FromServices] IDeleteModelVersionCommand command)
         {
+            _handler.HandleCommand(command, id);
+            return StatusCode(204);
+
         }
     }
 }

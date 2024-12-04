@@ -117,6 +117,9 @@ namespace AspProjekat2024.API.Core
             services.AddTransient<IGetOneModelVersionQuery, EfGetOneModelVersionQuery>();
             services.AddTransient<ICreateModelVersionCommand, EfCreateModelVersionCommand>();
             services.AddTransient<CreateModelVersionDtoValidator>();
+            services.AddTransient<IUpdateModelVersionCommand, EfUpdateModelVersionCommand>();
+            services.AddTransient<UpdateModelVersionDtoValidator>();
+            services.AddTransient<IDeleteModelVersionCommand, EfDeleteModelVersionCommand>();
 
 
 
