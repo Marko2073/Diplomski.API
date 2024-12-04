@@ -1,4 +1,4 @@
-﻿using AspProjekat2024.Implementation.Validators;
+﻿using Diplomski.Implementation.Validators;
 using Diplomski.Application.Dto.Creates;
 using Diplomski.Application.UseCases.Commands.ModelVersion;
 using Diplomski.DataAccess;

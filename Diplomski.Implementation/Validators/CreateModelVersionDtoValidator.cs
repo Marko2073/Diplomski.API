@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AspProjekat2024.Implementation.Validators
+namespace Diplomski.Implementation.Validators
 {
     public class CreateModelVersionDtoValidator : AbstractValidator<CreateModelVersionDto>
     {
