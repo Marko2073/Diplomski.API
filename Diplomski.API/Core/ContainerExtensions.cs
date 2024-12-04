@@ -8,6 +8,7 @@ using Diplomski.Application.Mail;
 using Diplomski.Application.UseCases.Commands.Brand;
 using Diplomski.Application.UseCases.Commands.Category;
 using Diplomski.Application.UseCases.Commands.Model;
+using Diplomski.Application.UseCases.Commands.ModelVersion;
 using Diplomski.Application.UseCases.Commands.Role;
 using Diplomski.Application.UseCases.Commands.Specification;
 using Diplomski.Application.UseCases.Commands.User;
@@ -23,6 +24,7 @@ using Diplomski.Implementation.Logging;
 using Diplomski.Implementation.UseCases.Commands.Brand;
 using Diplomski.Implementation.UseCases.Commands.Category;
 using Diplomski.Implementation.UseCases.Commands.Model;
+using Diplomski.Implementation.UseCases.Commands.ModelVersion;
 using Diplomski.Implementation.UseCases.Commands.Role;
 using Diplomski.Implementation.UseCases.Commands.Specification;
 using Diplomski.Implementation.UseCases.Commands.User;
@@ -113,6 +115,9 @@ namespace AspProjekat2024.API.Core
 
             services.AddTransient<IGetModelVersionsQuery, EfGetModelVersionsQuery>();
             services.AddTransient<IGetOneModelVersionQuery, EfGetOneModelVersionQuery>();
+            services.AddTransient<ICreateModelVersionCommand, EfCreateModelVersionCommand>();
+            services.AddTransient<CreateModelVersionDtoValidator>();
+
 
 
 

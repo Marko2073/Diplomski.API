@@ -43,7 +43,7 @@ namespace Diplomski.API.Controllers
 
         // POST api/<ModelsController>
         [HttpPost]
-        [Authorize]
+        //[Authorize]
         public IActionResult Post([FromBody] CreateModelDto dto, [FromServices] ICreateModelCommand command)
         {
             _handler.HandleCommand(command, dto);

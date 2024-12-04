@@ -1,4 +1,7 @@
-﻿using Diplomski.Application.Dto.Searches;
+﻿using Diplomski.Application.Dto.Creates;
+using Diplomski.Application.Dto.Searches;
+using Diplomski.Application.UseCases.Commands.Model;
+using Diplomski.Application.UseCases.Commands.ModelVersion;
 using Diplomski.Application.UseCases.Queries.Brand;
 using Diplomski.Application.UseCases.Queries.Model;
 using Diplomski.Application.UseCases.Queries.ModelVersion;
@@ -38,8 +41,14 @@ namespace Diplomski.API.Controllers
 
         // POST api/<ModelVersionsController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        //[Authorize]
+        public IActionResult Post([FromBody] CreateModelVersionDto dto, [FromServices] ICreateModelVersionCommand command)
         {
+            _handler.HandleCommand(command, dto);
+            return StatusCode(201);
+
+
+
         }
 
         // PUT api/<ModelVersionsController>/5
