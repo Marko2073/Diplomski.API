@@ -105,7 +105,7 @@ namespace Diplomski.Implementation
                 return allowedUseCases.Contains(useCase.Id);
 
             }
-            if (_actor.RoleId == 2) 
+            if (_actor.RoleId == 10) 
             {
                 return true; 
             }
