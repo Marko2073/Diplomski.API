@@ -14,6 +14,7 @@ namespace Diplomski.Domain
         public virtual Specification Parent { get; set; }
         public virtual ICollection<Specification> Childrens { get; set; } = new HashSet<Specification>();
         public virtual ICollection<ModelVersionSpecification> ModelVersionSpecifications { get; set; } = new HashSet<ModelVersionSpecification>();
+        public virtual ICollection<CategorySpecification> CategorySpecifications { get; set; } = new HashSet<CategorySpecification>();
 
     }
 }

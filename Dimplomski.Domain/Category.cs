@@ -13,5 +13,6 @@ namespace Diplomski.Domain
         public virtual Category Parent { get; set; }
         public virtual ICollection<Category> Childrens { get; set; } = new HashSet<Category>();
         public virtual ICollection<Model> Models { get; set; } = new HashSet<Model>();
+        public virtual ICollection<CategorySpecification> CategorySpecifications { get; set; } = new HashSet<CategorySpecification>();
     }
 }

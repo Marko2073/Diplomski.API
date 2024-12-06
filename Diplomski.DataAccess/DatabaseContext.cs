@@ -49,6 +49,7 @@ namespace Diplomski.DataAccess
         public DbSet<Configuration> Configurations{ get; set; }
         public DbSet<ErrorLog> ErrorLogs{ get; set; }
         public DbSet<UseCaseLog> UseCaseLogs{ get; set; }
+        public DbSet<CategorySpecification> CategorySpecifications { get; set; }
 
 
 
