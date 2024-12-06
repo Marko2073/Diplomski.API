@@ -7,6 +7,7 @@ using Diplomski.Application.Logging;
 using Diplomski.Application.Mail;
 using Diplomski.Application.UseCases.Commands.Brand;
 using Diplomski.Application.UseCases.Commands.Category;
+using Diplomski.Application.UseCases.Commands.CategorySpecification;
 using Diplomski.Application.UseCases.Commands.Model;
 using Diplomski.Application.UseCases.Commands.ModelVersion;
 using Diplomski.Application.UseCases.Commands.Pictures;
@@ -15,6 +16,7 @@ using Diplomski.Application.UseCases.Commands.Specification;
 using Diplomski.Application.UseCases.Commands.User;
 using Diplomski.Application.UseCases.Queries.Brand;
 using Diplomski.Application.UseCases.Queries.Category;
+using Diplomski.Application.UseCases.Queries.CategorySpecification;
 using Diplomski.Application.UseCases.Queries.Model;
 using Diplomski.Application.UseCases.Queries.ModelVersion;
 using Diplomski.Application.UseCases.Queries.Pictures;
@@ -25,6 +27,7 @@ using Diplomski.Implementation;
 using Diplomski.Implementation.Logging;
 using Diplomski.Implementation.UseCases.Commands.Brand;
 using Diplomski.Implementation.UseCases.Commands.Category;
+using Diplomski.Implementation.UseCases.Commands.CategorySpecification;
 using Diplomski.Implementation.UseCases.Commands.Model;
 using Diplomski.Implementation.UseCases.Commands.ModelVersion;
 using Diplomski.Implementation.UseCases.Commands.Pictures;
@@ -33,6 +36,7 @@ using Diplomski.Implementation.UseCases.Commands.Specification;
 using Diplomski.Implementation.UseCases.Commands.User;
 using Diplomski.Implementation.UseCases.Queries.Brand;
 using Diplomski.Implementation.UseCases.Queries.Category;
+using Diplomski.Implementation.UseCases.Queries.CategorySpecification;
 using Diplomski.Implementation.UseCases.Queries.Model;
 using Diplomski.Implementation.UseCases.Queries.ModelVersion;
 using Diplomski.Implementation.UseCases.Queries.Pictures;
@@ -134,6 +138,15 @@ namespace AspProjekat2024.API.Core
             services.AddTransient<IUpdatePictureCommand, EfUpdatePictureCommand>();
             services.AddTransient<IDeletePictureCommand, EfDeletePictureCommand>();
              
+            //categorySpecifications
+
+            services.AddTransient<IGetCategorySpecificationsQuery, EfGetCategorySpecificationsQuery>();
+            services.AddTransient<IGetOneCategorySpecificationQuery, EfGetOneCategorySpecificationQuery>();
+            services.AddTransient<ICreateCategorySpecificationCommand, EfCreateCategorySpecificationCommand>();
+            services.AddTransient<CreateCategorySpecificationDtoValidator>();
+            services.AddTransient<IUpdateCategorySpecificationCommand, EfUpdateCategorySpecificationCommand>();
+            services.AddTransient<UpdateCategorySpecificationDtoValidator>();
+            services.AddTransient<IDeleteCategorySpecificationCommand, EfDeleteCategorySpecificationCommand>();
 
 
 

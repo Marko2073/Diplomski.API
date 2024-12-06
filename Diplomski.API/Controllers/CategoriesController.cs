@@ -38,7 +38,7 @@ namespace Diplomski.API.Controllers
 
         // POST api/<CategoriesController>
         [HttpPost]
-        [Authorize]
+        //[Authorize]
         public IActionResult Post([FromBody] CreateCategoryDto dto, [FromServices] ICreateCategoryCommand command)
         {
             _handler.HandleCommand(command, dto);
