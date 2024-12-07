@@ -3,6 +3,7 @@ using AspProjekat2024.Implementation.Logging;
 using AspProjekat2024.Implementation.Validators;
 using Diplomski.API.Core;
 using Diplomski.Application;
+using Diplomski.Application.Dto.Searches;
 using Diplomski.Application.Logging;
 using Diplomski.Application.Mail;
 using Diplomski.Application.UseCases.Commands.Brand;
@@ -10,7 +11,9 @@ using Diplomski.Application.UseCases.Commands.Category;
 using Diplomski.Application.UseCases.Commands.CategorySpecification;
 using Diplomski.Application.UseCases.Commands.Model;
 using Diplomski.Application.UseCases.Commands.ModelVersion;
+using Diplomski.Application.UseCases.Commands.ModelVersionSpecification;
 using Diplomski.Application.UseCases.Commands.Pictures;
+using Diplomski.Application.UseCases.Commands.Price;
 using Diplomski.Application.UseCases.Commands.Role;
 using Diplomski.Application.UseCases.Commands.Specification;
 using Diplomski.Application.UseCases.Commands.User;
@@ -19,7 +22,9 @@ using Diplomski.Application.UseCases.Queries.Category;
 using Diplomski.Application.UseCases.Queries.CategorySpecification;
 using Diplomski.Application.UseCases.Queries.Model;
 using Diplomski.Application.UseCases.Queries.ModelVersion;
+using Diplomski.Application.UseCases.Queries.ModelVersionSpecification;
 using Diplomski.Application.UseCases.Queries.Pictures;
+using Diplomski.Application.UseCases.Queries.Price;
 using Diplomski.Application.UseCases.Queries.Role;
 using Diplomski.Application.UseCases.Queries.Specification;
 using Diplomski.Application.UseCases.Queries.User;
@@ -30,7 +35,9 @@ using Diplomski.Implementation.UseCases.Commands.Category;
 using Diplomski.Implementation.UseCases.Commands.CategorySpecification;
 using Diplomski.Implementation.UseCases.Commands.Model;
 using Diplomski.Implementation.UseCases.Commands.ModelVersion;
+using Diplomski.Implementation.UseCases.Commands.ModelVersionSpecification;
 using Diplomski.Implementation.UseCases.Commands.Pictures;
+using Diplomski.Implementation.UseCases.Commands.Price;
 using Diplomski.Implementation.UseCases.Commands.Role;
 using Diplomski.Implementation.UseCases.Commands.Specification;
 using Diplomski.Implementation.UseCases.Commands.User;
@@ -39,7 +46,9 @@ using Diplomski.Implementation.UseCases.Queries.Category;
 using Diplomski.Implementation.UseCases.Queries.CategorySpecification;
 using Diplomski.Implementation.UseCases.Queries.Model;
 using Diplomski.Implementation.UseCases.Queries.ModelVersion;
+using Diplomski.Implementation.UseCases.Queries.ModelVersionSpecification;
 using Diplomski.Implementation.UseCases.Queries.Pictures;
+using Diplomski.Implementation.UseCases.Queries.Price;
 using Diplomski.Implementation.UseCases.Queries.Role;
 using Diplomski.Implementation.UseCases.Queries.Specification;
 using Diplomski.Implementation.UseCases.Queries.User;
@@ -148,8 +157,25 @@ namespace AspProjekat2024.API.Core
             services.AddTransient<UpdateCategorySpecificationDtoValidator>();
             services.AddTransient<IDeleteCategorySpecificationCommand, EfDeleteCategorySpecificationCommand>();
 
+            //modelVersionSpecifications
 
+            services.AddTransient<IGetModelVersionSpecificationsQuery, EfGetModelVersionSpecificationsQuery>();
+            services.AddTransient<IGetOneModelVersionSpecificationQuery, EfGetOneModelVersionSpecificationQuery>();
+            services.AddTransient<ICreateModelVersionSpecificationCommand, EfCreateModelVersionSpecificationCommand>();
+            services.AddTransient<CreateModelVersionSpecificationDtoValidator>();
+            services.AddTransient<IUpdateModelVersionSpecificationCommand, EfUpdateModelVersionSpecificationCommand>();
+            services.AddTransient<UpdateModelVersionSpecificationDtoValidator>();
+            services.AddTransient<IDeleteModelVersionSpecificationCommand, EfDeleteModelVersionSpecificationCommand>();
 
+            //Prices
+
+            services.AddTransient<IGetPricesQuery, EfGetPricesQuery>();
+            services.AddTransient<IGetOnePriceQuery, EfGetOnePriceQuery>();
+            services.AddTransient<ICreatePriceCommand, EfCreatePriceCommand>();
+            services.AddTransient<CreatePriceDtoValidator>();
+            services.AddTransient<IUpdatePriceCommand, EfUpdatePriceCommand>();
+            services.AddTransient<UpdatePriceDtoValidator>();
+            services.AddTransient<IDeletePriceCommand, EfDeletePriceCommand>();
 
 
 
