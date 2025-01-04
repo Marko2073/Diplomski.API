@@ -20,6 +20,7 @@ using Diplomski.Application.UseCases.Commands.User;
 using Diplomski.Application.UseCases.Queries.Brand;
 using Diplomski.Application.UseCases.Queries.Category;
 using Diplomski.Application.UseCases.Queries.CategorySpecification;
+using Diplomski.Application.UseCases.Queries.Column;
 using Diplomski.Application.UseCases.Queries.Model;
 using Diplomski.Application.UseCases.Queries.ModelVersion;
 using Diplomski.Application.UseCases.Queries.ModelVersionSpecification;
@@ -27,6 +28,7 @@ using Diplomski.Application.UseCases.Queries.Pictures;
 using Diplomski.Application.UseCases.Queries.Price;
 using Diplomski.Application.UseCases.Queries.Role;
 using Diplomski.Application.UseCases.Queries.Specification;
+using Diplomski.Application.UseCases.Queries.Table;
 using Diplomski.Application.UseCases.Queries.User;
 using Diplomski.Implementation;
 using Diplomski.Implementation.Logging;
@@ -44,6 +46,7 @@ using Diplomski.Implementation.UseCases.Commands.User;
 using Diplomski.Implementation.UseCases.Queries.Brand;
 using Diplomski.Implementation.UseCases.Queries.Category;
 using Diplomski.Implementation.UseCases.Queries.CategorySpecification;
+using Diplomski.Implementation.UseCases.Queries.Column;
 using Diplomski.Implementation.UseCases.Queries.Model;
 using Diplomski.Implementation.UseCases.Queries.ModelVersion;
 using Diplomski.Implementation.UseCases.Queries.ModelVersionSpecification;
@@ -51,6 +54,7 @@ using Diplomski.Implementation.UseCases.Queries.Pictures;
 using Diplomski.Implementation.UseCases.Queries.Price;
 using Diplomski.Implementation.UseCases.Queries.Role;
 using Diplomski.Implementation.UseCases.Queries.Specification;
+using Diplomski.Implementation.UseCases.Queries.Tables;
 using Diplomski.Implementation.UseCases.Queries.User;
 using Diplomski.Implementation.Validators;
 using System.IdentityModel.Tokens.Jwt;
@@ -190,6 +194,11 @@ namespace AspProjekat2024.API.Core
 
             services.AddTransient<IEmailService>(provider =>
                 new EmailService("smtp.gmail.com", 587, "marko.markovic.33.21@ict.edu.rs", "huvumdbwlqayjfzm"));
+
+            //tables
+
+            services.AddTransient<IGetTablesQuery, EfGetTablesQuery>();
+            services.AddTransient<IGetColumnsQuery, EfGetColumnsQuery>();
         }
 
         public static Guid? GetTokenId(this HttpRequest request)

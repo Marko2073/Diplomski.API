@@ -100,6 +100,8 @@ if (app.Environment.IsDevelopment())
 }
 app.UseMiddleware<GlobalExceptionHandlingMiddleware>();
 
+app.UseCors("AllowSpecificOrigin");
+
 app.UseAuthentication();
 app.UseAuthorization();
 
