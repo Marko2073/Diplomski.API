@@ -35,7 +35,7 @@ namespace Diplomski.Implementation.UseCases.Queries.ModelVersionSpecification
             {
                 Id = x.Id,
                 ModelVersionId = x.ModelVersionId,
-                ModelVersionName = x.ModelVersion.Model.Name,
+                ModelVersionName = x.ModelVersion.Model.Brand.Name + " "+ x.ModelVersion.Model.Name,
                 SpecificationId = x.SpecificationId,
                 SpecificationParent = x.Specification.Parent.Name,
                 SpecificationValue = x.Specification.Name

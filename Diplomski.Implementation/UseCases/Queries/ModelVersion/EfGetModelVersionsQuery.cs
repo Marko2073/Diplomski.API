@@ -36,7 +36,10 @@ namespace Diplomski.Implementation.UseCases.Queries.ModelVersion
             {
                 Id = x.Id,
                 ModelId = x.ModelId,
-                StockQuantity = x.StockQuantity
+                StockQuantity = x.StockQuantity,
+                BrandName = x.Model.Brand.Name,
+                ModelName = x.Model.Name,
+                
             });
             
         }

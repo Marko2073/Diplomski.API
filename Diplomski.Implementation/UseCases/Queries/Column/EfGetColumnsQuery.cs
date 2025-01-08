@@ -1,5 +1,6 @@
 ﻿using Diplomski.Application.UseCases.Queries.Column;
 using Diplomski.DataAccess;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,24 +25,40 @@ namespace Diplomski.Implementation.UseCases.Queries.Column
         {
             var columns = new List<string>();
 
-            var query = Context.GetType().GetProperties().Where(x => x.PropertyType.Name.Contains("DbSet")).ToList();
+            // Prolazimo kroz sve entitete u DbContext
+            var entityType = Context.Model.GetEntityTypes()
+                .FirstOrDefault(e => e.GetTableName() == search); // Tražimo entitet sa imenom tabele
 
-            foreach (var table in query)
+            if (entityType != null)
             {
-                if (table.Name == search)
-                {
-                    var tableType = table.PropertyType.GenericTypeArguments[0];
-                    var tableProperties = tableType.GetProperties();
+                // Ako postoji odgovarajući entitet, uzimamo njegove kolone
+                var tableProperties = entityType.GetProperties();
 
-                    foreach (var property in tableProperties)
+                foreach (var property in tableProperties)
+                {
+                    // Preskačemo kolone CreatedAt i UpdatedAt
+                    if (property.Name.Equals("CreatedAt", StringComparison.OrdinalIgnoreCase) ||
+                        property.Name.Equals("UpdatedAt", StringComparison.OrdinalIgnoreCase))
                     {
-                        columns.Add(property.Name);
+                        continue;
+                    }
+
+                    string columnName = property.Name;
+
+                    columns.Add(columnName);
+
+                    // Proveravamo da li naziv kolone sadrži "Id" na kraju
+                    if (columnName.EndsWith("Id", StringComparison.OrdinalIgnoreCase) && columnName.Length > 2)
+                    {
+                        // Dodajemo novi naziv kao "Name"
+                        var relatedColumnName = columnName.ToLower().Substring(0, columnName.Length - 2) + "Name";
+                        columns.Add(relatedColumnName);
                     }
                 }
             }
 
             return columns;
-            
         }
+
     }
 }
