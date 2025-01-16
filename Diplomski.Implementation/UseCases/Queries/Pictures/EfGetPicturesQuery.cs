@@ -35,7 +35,8 @@ namespace Diplomski.Implementation.UseCases.Queries.Pictures
             {
                 Id = p.Id,
                 Path = p.Path,
-                ModelVersionId = p.ModelVersionId
+                ModelVersionId = p.ModelVersionId,
+                ModelVersionName = p.ModelVersion.Model.Brand.Name + " " + p.ModelVersion.Model.Name
             });
             
         }

@@ -13,5 +13,6 @@ namespace Diplomski.Application.Dto.Gets
         public DateTime DateTo { get; set; }
         public decimal Value { get; set; }
         public int ModelVersionId { get; set; }
+        public string ModelVersionName { get; set; }
     }
 }

@@ -60,7 +60,7 @@ namespace Diplomski.Implementation.UseCases.Commands.User
                 user.Phone = request.Phone;
                 user.Address = request.Address;
                 user.City = request.City;
-                user.Path = "/images/" + filename;
+                user.Path =  filename;
             }
             user.FirstName = request.FirstName;
             user.LastName = request.LastName;

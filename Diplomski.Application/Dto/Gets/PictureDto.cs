@@ -10,6 +10,7 @@ namespace Diplomski.Application.Dto.Gets
     {
         public string Path { get; set; }
         public int ModelVersionId { get; set; }
+        public string ModelVersionName { get; set; }
 
 
     }

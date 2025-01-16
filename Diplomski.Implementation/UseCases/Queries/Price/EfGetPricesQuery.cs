@@ -54,7 +54,8 @@ namespace Diplomski.Implementation.UseCases.Queries.Price
                 DateFrom = x.DateFrom,
                 DateTo = x.DateTo,
                 Value = x.PriceValue,
-                ModelVersionId = x.ModelVersionId
+                ModelVersionId = x.ModelVersionId,
+                ModelVersionName = x.ModelVersion.Model.Brand.Name + " " + x.ModelVersion.Model.Name
             });
             
         }
