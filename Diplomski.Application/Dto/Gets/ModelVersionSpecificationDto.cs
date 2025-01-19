@@ -13,6 +13,7 @@ namespace Diplomski.Application.Dto.Gets
         public int SpecificationId { get; set; }
         public string SpecificationParent { get; set; }
         public string SpecificationValue { get; set; }
+        public int ParentId { get; set; }
 
     }
 }

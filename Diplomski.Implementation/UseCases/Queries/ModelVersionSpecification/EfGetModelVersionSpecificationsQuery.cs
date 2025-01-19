@@ -38,7 +38,8 @@ namespace Diplomski.Implementation.UseCases.Queries.ModelVersionSpecification
                 ModelVersionName = x.ModelVersion.Model.Brand.Name + " "+ x.ModelVersion.Model.Name,
                 SpecificationId = x.SpecificationId,
                 SpecificationParent = x.Specification.Parent.Name,
-                SpecificationValue = x.Specification.Name
+                SpecificationValue = x.Specification.Name,
+                ParentId = x.Specification.Parent.Id
                 
             });
             
