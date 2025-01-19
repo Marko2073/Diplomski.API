@@ -12,6 +12,8 @@ namespace Diplomski.Application.Dto.Gets
         public int StockQuantity { get; set; }
         public string BrandName { get; set; }
         public string ModelName { get; set; }
+        public string Name { get; set; }
+
        
     }
 }
