@@ -38,7 +38,7 @@ namespace Diplomski.API.Controllers
         }
 
         [HttpPost]
-        [Authorize]
+        //[Authorize]
         public IActionResult Post([FromBody] CreateBrandDto dto, [FromServices] ICreateBrandCommand command)
         {
             _handler.HandleCommand(command, dto);
@@ -49,7 +49,7 @@ namespace Diplomski.API.Controllers
         }
         // PUT api/<BrandsController>/5
         [HttpPut("{id}")]
-        [Authorize]
+        //[Authorize]
         public IActionResult Put(int id, [FromBody] UpdateBrandDto dto, [FromServices] IUpdateBrandCommand command)
         {
             dto.Id = id;
@@ -60,7 +60,7 @@ namespace Diplomski.API.Controllers
 
         // DELETE api/<BrandsController>/5
         [HttpDelete("{id}")]
-        [Authorize]
+        //[Authorize]
         public IActionResult Delete(int id, [FromServices] IDeleteBrandCommand command)
         {
             _handler.HandleCommand(command, id);

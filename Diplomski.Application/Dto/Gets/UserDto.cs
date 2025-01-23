@@ -16,5 +16,7 @@ namespace Diplomski.Application.Dto.Gets
         public string Address { get; set; }
         public string City { get; set; }
         public string Path { get; set; }
+        public string RoleName { get; set; }
+        public int? RoleId { get; set; }
     }
 }

@@ -40,6 +40,8 @@ namespace Diplomski.Implementation.UseCases.Queries.User
                 Phone = x.Phone,
                 Address = x.Address,
                 City = x.City,
+                RoleName = x.Role.Name,
+                RoleId = x.RoleId
 
             }).ToList();
         }
