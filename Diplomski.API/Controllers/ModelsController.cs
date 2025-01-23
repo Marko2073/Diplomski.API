@@ -55,7 +55,7 @@ namespace Diplomski.API.Controllers
 
         // PUT api/<ModelsController>/5
         [HttpPut("{id}")]
-        [Authorize]
+        //[Authorize]
         public IActionResult Put(int id, [FromBody] UpdateModelDto dto, [FromServices] IUpdateModelCommand command)
         {
             dto.Id = id;
@@ -66,7 +66,7 @@ namespace Diplomski.API.Controllers
 
         // DELETE api/<ModelsController>/5
         [HttpDelete("{id}")]
-        [Authorize]
+        //[Authorize]
         public IActionResult Delete(int id, [FromServices] IDeleteModelCommand command)
         {
             _handler.HandleCommand(command, id);
