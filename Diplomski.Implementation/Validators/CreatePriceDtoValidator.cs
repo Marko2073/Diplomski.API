@@ -18,7 +18,7 @@ namespace Diplomski.Implementation.Validators
                 .Must(x => context.ModelVersions.Any(mv => mv.Id == x))
                 .WithMessage("Model version with an id of {PropertyValue} doesn't exist.");
 
-            RuleFor(x => x.PriceValue)
+            RuleFor(x => x.Value)
                 .NotEmpty()
                 .GreaterThan(0);
 

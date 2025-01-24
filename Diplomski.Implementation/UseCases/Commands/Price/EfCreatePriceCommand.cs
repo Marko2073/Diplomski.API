@@ -34,7 +34,7 @@ namespace Diplomski.Implementation.UseCases.Commands.Price
             {
                 DateFrom = request.DateFrom,
                 DateTo = request.DateTo,
-                PriceValue = request.PriceValue,
+                PriceValue = request.Value,
                 ModelVersionId = request.ModelVersionId
             });
 
