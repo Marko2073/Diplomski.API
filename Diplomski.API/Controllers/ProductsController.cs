@@ -1,4 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Diplomski.Application.Dto.Searches;
+using Diplomski.Application.UseCases.Queries.Model;
+using Diplomski.Application.UseCases.Queries.Price;
+using Diplomski.Application.UseCases.Queries.Products;
+using Diplomski.Implementation;
+using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -8,11 +13,17 @@ namespace Diplomski.API.Controllers
     [ApiController]
     public class ProductsController : ControllerBase
     {
-        // GET: api/<ProductsController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        private UseCaseHandler _handler;
+        public ProductsController(UseCaseHandler handler)
         {
-            return new string[] { "value1", "value2" };
+            _handler = handler;
+        }
+
+
+        [HttpGet]
+        public IActionResult Get([FromQuery] BaseSearch search, [FromServices] IGetProductsQuery query)
+        {
+            return Ok(_handler.HandleQuery(query, search));
         }
 
         // GET api/<ProductsController>/5

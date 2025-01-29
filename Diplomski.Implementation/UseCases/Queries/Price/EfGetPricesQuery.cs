@@ -46,7 +46,6 @@ namespace Diplomski.Implementation.UseCases.Queries.Price
                 query = query.Where(x => x.PriceValue <= search.MaxValue);
             }
 
-            query = query.Skip((search.Page - 1) * search.PerPage).Take(search.PerPage);
 
             return query.Select(x => new PriceDto
             {

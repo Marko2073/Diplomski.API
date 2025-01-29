@@ -38,7 +38,7 @@ namespace Diplomski.Implementation.UseCases.Commands.Price
 
             price.DateFrom = request.DateFrom;
             price.DateTo = request.DateTo;
-            price.PriceValue = request.PriceValue;
+            price.PriceValue = request.Value;
             price.ModelVersionId = request.ModelVersionId;
 
             Context.SaveChanges();

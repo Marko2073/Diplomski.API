@@ -10,7 +10,7 @@ namespace Diplomski.Application.Dto.Updates
     {
         public int Id { get; set; }
         public int ModelVersionId { get; set; }
-        public decimal PriceValue { get; set; }
+        public decimal Value { get; set; }
         public DateTime DateFrom { get; set; }
         public DateTime DateTo { get; set; }
     }

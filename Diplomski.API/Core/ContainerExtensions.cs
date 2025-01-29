@@ -26,6 +26,7 @@ using Diplomski.Application.UseCases.Queries.ModelVersion;
 using Diplomski.Application.UseCases.Queries.ModelVersionSpecification;
 using Diplomski.Application.UseCases.Queries.Pictures;
 using Diplomski.Application.UseCases.Queries.Price;
+using Diplomski.Application.UseCases.Queries.Products;
 using Diplomski.Application.UseCases.Queries.Role;
 using Diplomski.Application.UseCases.Queries.Specification;
 using Diplomski.Application.UseCases.Queries.Table;
@@ -52,6 +53,7 @@ using Diplomski.Implementation.UseCases.Queries.ModelVersion;
 using Diplomski.Implementation.UseCases.Queries.ModelVersionSpecification;
 using Diplomski.Implementation.UseCases.Queries.Pictures;
 using Diplomski.Implementation.UseCases.Queries.Price;
+using Diplomski.Implementation.UseCases.Queries.Product;
 using Diplomski.Implementation.UseCases.Queries.Role;
 using Diplomski.Implementation.UseCases.Queries.Specification;
 using Diplomski.Implementation.UseCases.Queries.Tables;
@@ -180,6 +182,10 @@ namespace AspProjekat2024.API.Core
             services.AddTransient<IUpdatePriceCommand, EfUpdatePriceCommand>();
             services.AddTransient<UpdatePriceDtoValidator>();
             services.AddTransient<IDeletePriceCommand, EfDeletePriceCommand>();
+
+            //products
+
+            services.AddTransient<IGetProductsQuery, EfGetProductsQuery>();
 
 
 

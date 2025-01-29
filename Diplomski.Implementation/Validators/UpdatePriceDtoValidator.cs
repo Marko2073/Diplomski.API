@@ -13,7 +13,7 @@ namespace Diplomski.Implementation.Validators
     {
         public UpdatePriceDtoValidator(DatabaseContext context)
         {
-            RuleFor(x => x.PriceValue).NotEmpty().WithMessage("Price value is required.");
+            RuleFor(x => x.Value).NotEmpty().WithMessage("Price value is required.");
             RuleFor(x => x.DateFrom).NotEmpty().WithMessage("Date from is required.");
             RuleFor(x => x.DateTo).NotEmpty().WithMessage("Date to is required.");
             RuleFor(x => x.ModelVersionId)
@@ -21,7 +21,7 @@ namespace Diplomski.Implementation.Validators
                 .Must(x => context.ModelVersions.Any(mv => mv.Id == x))
                 .WithMessage("Model version with an id of {PropertyValue} doesn't exist.");
 
-            RuleFor(x => x.PriceValue)
+            RuleFor(x => x.Value)
                 .NotEmpty()
                 .GreaterThan(0)
                 .WithMessage("Price value must be greater than 0.");
