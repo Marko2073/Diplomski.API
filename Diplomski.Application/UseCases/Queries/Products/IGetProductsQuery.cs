@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Diplomski.Application.UseCases.Queries.Products
 {
-    public interface IGetProductsQuery : IQuery<BaseSearch, IEnumerable<ProductDto>>
+    public interface IGetProductsQuery : IQuery<ProductSearch, IEnumerable<ProductDto>>
     {
     }
 }

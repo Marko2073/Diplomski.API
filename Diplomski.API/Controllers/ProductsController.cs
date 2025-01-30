@@ -22,7 +22,7 @@ namespace Diplomski.API.Controllers
 
 
         [HttpGet]
-        public IActionResult Get([FromQuery] BaseSearch search, [FromServices] IGetProductsQuery query)
+        public IActionResult Get([FromQuery] ProductSearch search, [FromServices] IGetProductsQuery query)
         {
             return Ok(_handler.HandleQuery(query, search));
         }

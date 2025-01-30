@@ -22,13 +22,17 @@ namespace Diplomski.Implementation.UseCases.Queries.Product
 
         public string Description => "Search All Products";
 
-        public IEnumerable<ProductDto> Execute(BaseSearch search)
+        public IEnumerable<ProductDto> Execute(ProductSearch search)
         {
             var query = Context.ModelVersions.AsQueryable();
 
-            if (!string.IsNullOrEmpty(search.Keyword) || !string.IsNullOrWhiteSpace(search.Keyword))
+            if(search.CategoryId != 0)
             {
-                query = query.Where(x => x.Model.Name.ToLower().Contains(search.Keyword.ToLower()));
+                query = query.Where(x => x.Model.CategoryId == search.CategoryId);
+            }
+            if(!string.IsNullOrEmpty(search.CategoryName))
+            {
+                query = query.Where(x => x.Model.Category.Name.ToLower().Contains(search.CategoryName.ToLower()));
             }
 
             return query.Select(x => new ProductDto
