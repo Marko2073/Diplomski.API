@@ -186,6 +186,7 @@ namespace AspProjekat2024.API.Core
             //products
 
             services.AddTransient<IGetProductsQuery, EfGetProductsQuery>();
+            services.AddTransient<IGetOneProductQuery, EfGetOneProductQuery>();
 
 
 

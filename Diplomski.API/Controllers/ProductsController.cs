@@ -1,4 +1,5 @@
 ﻿using Diplomski.Application.Dto.Searches;
+using Diplomski.Application.UseCases.Queries.Brand;
 using Diplomski.Application.UseCases.Queries.Model;
 using Diplomski.Application.UseCases.Queries.Price;
 using Diplomski.Application.UseCases.Queries.Products;
@@ -27,10 +28,11 @@ namespace Diplomski.API.Controllers
         }
 
         // GET api/<ProductsController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet]
+        [Route("{id}")]
+        public IActionResult Get(int id, [FromServices] IGetOneProductQuery query)
         {
-            return "value";
+            return Ok(_handler.HandleQuery(query, id));
         }
 
         // POST api/<ProductsController>
