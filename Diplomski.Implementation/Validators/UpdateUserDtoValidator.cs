@@ -32,10 +32,6 @@ namespace AspProjekat2024.Implementation.Validators
                 .Must((dto, email) => !_context.Users.Any(u => u.Email == email && u.Id != dto.Id))
                 .WithMessage("Email is already taken");
 
-            RuleFor(x => x.Password)
-                .NotEmpty().WithMessage("Password is required")
-                .MinimumLength(6).WithMessage("Password must have at least 6 characters");
-
             RuleFor(x => x.Phone)
                 .NotEmpty().WithMessage("Phone is required")
                 .MinimumLength(9).WithMessage("Phone must have at least 9 characters");

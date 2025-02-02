@@ -56,19 +56,19 @@ namespace Diplomski.Implementation.UseCases.Commands.User
                 user.FirstName = request.FirstName;
                 user.LastName = request.LastName;
                 user.Email = request.Email;
-                user.Password = BCrypt.Net.BCrypt.HashPassword(request.Password);
                 user.Phone = request.Phone;
                 user.Address = request.Address;
                 user.City = request.City;
                 user.Path =  filename;
+                user.RoleId = request.RoleId;
             }
             user.FirstName = request.FirstName;
             user.LastName = request.LastName;
             user.Email = request.Email;
-            user.Password = BCrypt.Net.BCrypt.HashPassword(request.Password);
             user.Phone = request.Phone;
             user.Address = request.Address;
             user.City = request.City;
+            user.RoleId = request.RoleId;
 
 
             Context.SaveChanges();

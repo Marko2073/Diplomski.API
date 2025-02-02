@@ -12,6 +12,7 @@ namespace Diplomski.Application.Dto.Gets
         public int Id { get; set; }
         public string BrandName { get; set; }
         public string ModelName { get; set; }
+        public string categoryName { get; set; }
         public decimal? Price { get; set; }
         public IEnumerable<SpecificationDto> Specifications { get; set; }
         public IEnumerable<PictureDto> Pictures{ get; set; }

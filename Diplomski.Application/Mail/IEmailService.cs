@@ -64,5 +64,7 @@ namespace Diplomski.Application.Mail
                 throw;
             }
         }
+        
+
     }
 }

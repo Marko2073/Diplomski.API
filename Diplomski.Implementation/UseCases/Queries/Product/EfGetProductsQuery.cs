@@ -40,6 +40,7 @@ namespace Diplomski.Implementation.UseCases.Queries.Product
                 Id = x.Id,
                 BrandName = x.Model.Brand.Name,
                 ModelName = x.Model.Name,
+                categoryName = x.Model.Category.Name,
                 Price = x.Prices.Where(x=>x.DateFrom <= DateTime.Now && x.DateTo >= DateTime.Now).FirstOrDefault().PriceValue,
                 Specifications = x.ModelVersionSpecifications.Select(x=> new SpecificationDto
                 {
