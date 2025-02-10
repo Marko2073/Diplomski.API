@@ -34,6 +34,36 @@ namespace Diplomski.Implementation.UseCases.Queries.Product
             {
                 query = query.Where(x => x.Model.Category.Name.ToLower().Contains(search.CategoryName.ToLower()));
             }
+            if(search.BrandId != null)
+            {
+                query = query.Where(x => x.Model.BrandId == search.BrandId);
+            }
+            if(search.ModelVersionId != null)
+            {
+                query = query.Where(x => x.Id == search.ModelVersionId);
+            }
+            if(search.ModelId != null)
+            {
+                query = query.Where(x => x.ModelId == search.ModelId);
+            }
+            if (search.SpecificationIds != null && search.SpecificationIds.Any())
+            {
+                var specifications = Context.Specifications
+                    .Where(s => search.SpecificationIds.Contains(s.Id))
+                    .Select(s => new { s.Id, s.ParentId })
+                    .ToList();
+
+                var groupedSpecIds = specifications
+                    .GroupBy(s => s.ParentId)
+                    .ToList();
+
+                foreach (var group in groupedSpecIds)
+                {
+                    var specIds = group.Select(g => g.Id).ToList();
+                    query = query.Where(modelVersion => modelVersion.ModelVersionSpecifications.Any(spec => specIds.Contains(spec.SpecificationId)));
+                }
+            }
+
 
             return query.Select(x => new ProductDto
             {

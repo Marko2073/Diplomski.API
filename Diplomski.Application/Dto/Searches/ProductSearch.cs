@@ -10,5 +10,11 @@ namespace Diplomski.Application.Dto.Searches
     {
         public int CategoryId { get; set; }
         public string? CategoryName { get; set; }
+        public int? BrandId { get; set; }
+        public int? ModelVersionId { get; set; }
+        public int? ModelId { get; set; }
+        public List<int>? SpecificationIds { get; set; }
+        public int? Page { get; set; } = 1;
+        public int? ItemsPerPage { get; set; } = 2;
     }
 }
