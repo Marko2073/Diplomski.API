@@ -67,39 +67,39 @@ namespace Diplomski.Implementation.UseCases.Commands.User
         private string GenerateWelcomeEmail(string firstName)
         {
             return $@"
-    <!DOCTYPE html>
-    <html lang='en'>
-    <head>
-        <meta charset='UTF-8'>
-        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-        <title>Welcome to Gaming Store!</title>
-        <style>
-            body {{ background-color: #f4f4f4; color: #333; font-family: Arial, sans-serif; padding: 20px; }}
-            .container {{ max-width: 600px; margin: 0 auto; background-color: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }}
-            .header {{ background-color: #e0e0e0; padding: 20px; border-radius: 8px 8px 0 0; text-align: center; }}
-            .header h1 {{ margin: 0; font-size: 24px; }}
-            .content {{ padding: 20px; text-align: center; }}
-            .content p {{ font-size: 16px; line-height: 1.5; }}
-            .footer {{ text-align: center; font-size: 12px; color: #888; margin-top: 20px; }}
-        </style>
-    </head>
-    <body>
-        <div class='container'>
-            <div class='header'>
-                <h1>Welcome to Gaming Store!</h1>
-            </div>
-            <div class='content'>
-                <p>Hi {firstName},</p>
-                <p>Thank you for registering with us. We're excited to have you with us!</p>
-                <p>Feel free to explore and let us know if you have any questions. We're here to help!</p>
-                <p>Best regards,<br>Gaming Store Team</p>
-            </div>
-            <div class='footer'>
-                <p>&copy; 2025 Gaming Store. All rights reserved.</p>
-            </div>
-        </div>
-    </body>
-    </html>";
+                        <!DOCTYPE html>
+                        <html lang='en'>
+                        <head>
+                            <meta charset='UTF-8'>
+                            <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+                            <title>Welcome to Gaming Store!</title>
+                            <style>
+                                body {{ background-color: #f4f4f4; color: #333; font-family: Arial, sans-serif; padding: 20px; }}
+                                .container {{ max-width: 600px; margin: 0 auto; background-color: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }}
+                                .header {{ background-color: #e0e0e0; padding: 20px; border-radius: 8px 8px 0 0; text-align: center; }}
+                                .header h1 {{ margin: 0; font-size: 24px; }}
+                                .content {{ padding: 20px; text-align: center; }}
+                                .content p {{ font-size: 16px; line-height: 1.5; }}
+                                .footer {{ text-align: center; font-size: 12px; color: #888; margin-top: 20px; }}
+                            </style>
+                        </head>
+                        <body>
+                            <div class='container'>
+                                <div class='header'>
+                                    <h1>Welcome to Gaming Store!</h1>
+                                </div>
+                                <div class='content'>
+                                    <p>Hi {firstName},</p>
+                                    <p>Thank you for registering with us. We're excited to have you with us!</p>
+                                    <p>Feel free to explore and let us know if you have any questions. We're here to help!</p>
+                                    <p>Best regards,<br>Gaming Store Team</p>
+                                </div>
+                                <div class='footer'>
+                                    <p>&copy; 2025 Gaming Store. All rights reserved.</p>
+                                </div>
+                            </div>
+                        </body>
+                        </html>";
         }
     }
 }

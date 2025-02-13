@@ -18,6 +18,7 @@ using Diplomski.Application.UseCases.Commands.Role;
 using Diplomski.Application.UseCases.Commands.Specification;
 using Diplomski.Application.UseCases.Commands.User;
 using Diplomski.Application.UseCases.Queries.Brand;
+using Diplomski.Application.UseCases.Queries.Cart;
 using Diplomski.Application.UseCases.Queries.Category;
 using Diplomski.Application.UseCases.Queries.CategorySpecification;
 using Diplomski.Application.UseCases.Queries.Column;
@@ -45,6 +46,7 @@ using Diplomski.Implementation.UseCases.Commands.Role;
 using Diplomski.Implementation.UseCases.Commands.Specification;
 using Diplomski.Implementation.UseCases.Commands.User;
 using Diplomski.Implementation.UseCases.Queries.Brand;
+using Diplomski.Implementation.UseCases.Queries.Cart;
 using Diplomski.Implementation.UseCases.Queries.Category;
 using Diplomski.Implementation.UseCases.Queries.CategorySpecification;
 using Diplomski.Implementation.UseCases.Queries.Column;
@@ -188,7 +190,10 @@ namespace AspProjekat2024.API.Core
             services.AddTransient<IGetProductsQuery, EfGetProductsQuery>();
             services.AddTransient<IGetOneProductQuery, EfGetOneProductQuery>();
 
+            //carts
 
+            services.AddTransient<IGetCartsQuery, EfGetCartsQuery>();
+            services.AddTransient<IGetOneCartQuery, EfGetOneCartQuery>();
 
 
 
