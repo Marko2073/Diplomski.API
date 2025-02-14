@@ -6,6 +6,7 @@ using Diplomski.Application;
 using Diplomski.Application.Dto.Searches;
 using Diplomski.Application.Logging;
 using Diplomski.Application.Mail;
+using Diplomski.Application.UseCases.Commands;
 using Diplomski.Application.UseCases.Commands.Brand;
 using Diplomski.Application.UseCases.Commands.Category;
 using Diplomski.Application.UseCases.Commands.CategorySpecification;
@@ -35,6 +36,7 @@ using Diplomski.Application.UseCases.Queries.User;
 using Diplomski.Implementation;
 using Diplomski.Implementation.Logging;
 using Diplomski.Implementation.UseCases.Commands.Brand;
+using Diplomski.Implementation.UseCases.Commands.Cart;
 using Diplomski.Implementation.UseCases.Commands.Category;
 using Diplomski.Implementation.UseCases.Commands.CategorySpecification;
 using Diplomski.Implementation.UseCases.Commands.Model;
@@ -194,6 +196,7 @@ namespace AspProjekat2024.API.Core
 
             services.AddTransient<IGetCartsQuery, EfGetCartsQuery>();
             services.AddTransient<IGetOneCartQuery, EfGetOneCartQuery>();
+            services.AddTransient<ICreateCartCommand, EfCreateCartCommand>();
 
 
 

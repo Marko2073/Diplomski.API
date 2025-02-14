@@ -46,7 +46,6 @@ namespace Diplomski.Implementation.UseCases.Commands.User
                 City = data.City,
                 Path = "default.png",
                 RoleId = 3,
-                Carts = new List<Cart> { new Cart() },
                 Configurations = new List<Configuration> { new Configuration() }
             };
 

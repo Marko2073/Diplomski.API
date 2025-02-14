@@ -1,4 +1,7 @@
-﻿using Diplomski.Application.Dto.Searches;
+﻿using Diplomski.Application.Dto.Creates;
+using Diplomski.Application.Dto.Searches;
+using Diplomski.Application.UseCases.Commands;
+using Diplomski.Application.UseCases.Commands.Brand;
 using Diplomski.Application.UseCases.Queries.Brand;
 using Diplomski.Application.UseCases.Queries.Cart;
 using Diplomski.Implementation;
@@ -36,10 +39,15 @@ namespace Diplomski.API.Controllers
 
         // POST api/<CartsController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        //[Authorize]
+        public IActionResult Post([FromBody] CreateCartDto dto, [FromServices] ICreateCartCommand command)
         {
-        }
+            _handler.HandleCommand(command, dto);
+            return StatusCode(201);
 
+
+
+        }
         // PUT api/<CartsController>/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
