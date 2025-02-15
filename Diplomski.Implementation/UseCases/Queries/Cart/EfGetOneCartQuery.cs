@@ -40,6 +40,11 @@ namespace Diplomski.Implementation.UseCases.Queries.Cart
                         ModelVersionId = ci.ModelVersionId,
                         ModelVersionName = ci.ModelVersion.Model.Brand.Name + " " + ci.ModelVersion.Model.Name,
                         Quantity = ci.Quantity,
+                        Pictures = ci.ModelVersion.Pictures.Select(p => new PictureDto
+                        {
+                            Id = p.Id,
+                            Path = p.Path
+                        }),
                         Price = ci.ModelVersion.Prices
                             .Where(p => p.DateFrom < DateTime.Now && p.DateTo >= DateTime.Now)
                             .Select(p => (decimal?)p.PriceValue)

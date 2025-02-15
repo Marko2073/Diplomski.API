@@ -11,6 +11,7 @@ namespace Diplomski.Application.Dto.Gets
         public int Id { get; set; }
         public int UserId { get; set; }
         public decimal TotalPrice { get; set; }
+        public DateTime CreatedAt { get; set; }
         public IEnumerable<CartItemDto> CartItems { get; set; }
         
     }

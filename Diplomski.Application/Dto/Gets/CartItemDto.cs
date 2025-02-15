@@ -13,5 +13,6 @@ namespace Diplomski.Application.Dto.Gets
         public string ModelVersionName { get; set; }
         public int Quantity { get; set; }
         public decimal Price { get; set; }
+        public IEnumerable<PictureDto> Pictures { get; set; }
     }
 }

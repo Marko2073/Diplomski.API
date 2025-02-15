@@ -1,4 +1,5 @@
-﻿using Diplomski.Application.Dto.Gets;
+﻿using Diplomski.Application;
+using Diplomski.Application.Dto.Gets;
 using Diplomski.Application.Dto.Searches;
 using Diplomski.Application.UseCases.Queries.Cart;
 using Diplomski.DataAccess;
@@ -13,8 +14,10 @@ namespace Diplomski.Implementation.UseCases.Queries.Cart
 {
     public class EfGetCartsQuery : EfUseCase, IGetCartsQuery
     {
-        public EfGetCartsQuery(DatabaseContext context) : base(context)
+        public IApplicationActor _actor;
+        public EfGetCartsQuery(DatabaseContext context, IApplicationActor actor) : base(context)
         {
+            _actor = actor;
         }
 
         public int Id => 56;
@@ -25,6 +28,8 @@ namespace Diplomski.Implementation.UseCases.Queries.Cart
 
         public IEnumerable<CartDto> Execute(BaseSearch search)
         {
+            var actorId = _actor.Id;
+
             var carts = Context.Carts
                 .Include(x => x.CartItems)
                     .ThenInclude(ci => ci.ModelVersion)
@@ -33,12 +38,18 @@ namespace Diplomski.Implementation.UseCases.Queries.Cart
                 {
                     Id = x.Id,
                     UserId = x.UserId,
+                    CreatedAt = x.CreatedAt,
                     CartItems = x.CartItems.Select(ci => new CartItemDto
                     {
                         Id = ci.Id,
                         ModelVersionId = ci.ModelVersionId,
                         ModelVersionName = ci.ModelVersion.Model.Brand.Name + " " + ci.ModelVersion.Model.Name,
                         Quantity = ci.Quantity,
+                        Pictures = ci.ModelVersion.Pictures.Select(p => new PictureDto
+                        {
+                            Id = p.Id,
+                            Path = p.Path
+                        }),
                         Price = ci.ModelVersion.Prices
                             .Where(p => p.DateFrom < DateTime.Now && p.DateTo >= DateTime.Now)
                             .Select(p => (decimal?)p.PriceValue)
@@ -62,6 +73,10 @@ namespace Diplomski.Implementation.UseCases.Queries.Cart
 
                 cart.TotalPrice = totalPrice;
                 Console.WriteLine($"Cart ID: {cart.Id}, TotalPrice: {cart.TotalPrice}");
+            }
+            if(actorId != 0)
+            {
+                carts = carts.Where(x => x.UserId == actorId).ToList();
             }
 
             return carts;
