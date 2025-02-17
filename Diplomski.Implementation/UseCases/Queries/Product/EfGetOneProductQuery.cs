@@ -17,7 +17,7 @@ namespace Diplomski.Implementation.UseCases.Queries.Product
         {
         }
 
-        public int Id => 207;
+        public int Id => 60 ;
 
         public string Name => "Single product";
 

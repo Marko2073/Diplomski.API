@@ -21,7 +21,7 @@ namespace Diplomski.Implementation.UseCases.Commands.Cart
             _actor = actor;
         }
 
-        public int Id => 57;
+        public int Id => 58;
 
         public string Name => "Create Cart";
 

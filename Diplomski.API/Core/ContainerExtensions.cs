@@ -23,6 +23,7 @@ using Diplomski.Application.UseCases.Queries.Cart;
 using Diplomski.Application.UseCases.Queries.Category;
 using Diplomski.Application.UseCases.Queries.CategorySpecification;
 using Diplomski.Application.UseCases.Queries.Column;
+using Diplomski.Application.UseCases.Queries.Configuration;
 using Diplomski.Application.UseCases.Queries.Model;
 using Diplomski.Application.UseCases.Queries.ModelVersion;
 using Diplomski.Application.UseCases.Queries.ModelVersionSpecification;
@@ -52,6 +53,7 @@ using Diplomski.Implementation.UseCases.Queries.Cart;
 using Diplomski.Implementation.UseCases.Queries.Category;
 using Diplomski.Implementation.UseCases.Queries.CategorySpecification;
 using Diplomski.Implementation.UseCases.Queries.Column;
+using Diplomski.Implementation.UseCases.Queries.Configuration;
 using Diplomski.Implementation.UseCases.Queries.Model;
 using Diplomski.Implementation.UseCases.Queries.ModelVersion;
 using Diplomski.Implementation.UseCases.Queries.ModelVersionSpecification;
@@ -187,10 +189,7 @@ namespace AspProjekat2024.API.Core
             services.AddTransient<UpdatePriceDtoValidator>();
             services.AddTransient<IDeletePriceCommand, EfDeletePriceCommand>();
 
-            //products
-
-            services.AddTransient<IGetProductsQuery, EfGetProductsQuery>();
-            services.AddTransient<IGetOneProductQuery, EfGetOneProductQuery>();
+            
 
             //carts
 
@@ -198,7 +197,15 @@ namespace AspProjekat2024.API.Core
             services.AddTransient<IGetOneCartQuery, EfGetOneCartQuery>();
             services.AddTransient<ICreateCartCommand, EfCreateCartCommand>();
 
+            //products
 
+            services.AddTransient<IGetProductsQuery, EfGetProductsQuery>();
+            services.AddTransient<IGetOneProductQuery, EfGetOneProductQuery>();
+
+            //configurations
+
+            services.AddTransient<IGetConfigurationsQuery, EfGetConfigurationsQuery>();
+            services.AddTransient<IGetOneConfigurationQuery, EfGetOneConfigurationQuery>();
 
 
 
