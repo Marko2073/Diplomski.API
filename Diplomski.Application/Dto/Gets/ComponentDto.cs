@@ -4,6 +4,7 @@
     {
         public int Id { get; set; }
         public string ModelVersionName { get; set; }
+        public IEnumerable<PictureDto> Pictures { get; set; }
 
         
         public decimal Price { get; set; }
