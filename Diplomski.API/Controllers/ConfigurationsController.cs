@@ -1,4 +1,7 @@
-﻿using Diplomski.Application.Dto.Searches;
+﻿using Diplomski.Application.Dto.Creates;
+using Diplomski.Application.Dto.Searches;
+using Diplomski.Application.UseCases.Commands.Brand;
+using Diplomski.Application.UseCases.Commands.Configuration;
 using Diplomski.Application.UseCases.Queries.Brand;
 using Diplomski.Application.UseCases.Queries.Configuration;
 using Diplomski.Implementation;
@@ -34,12 +37,16 @@ namespace Diplomski.API.Controllers
             return Ok(_handler.HandleQuery(query, id));
         }
 
-        // POST api/<ConfigurationsController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        //[Authorize]
+        public IActionResult Post([FromBody] CreateConfigurationDto dto, [FromServices] ICreateConfigurationCommand command)
         {
-        }
+            _handler.HandleCommand(command, dto);
+            return StatusCode(201);
 
+
+
+        }
         // PUT api/<ConfigurationsController>/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)

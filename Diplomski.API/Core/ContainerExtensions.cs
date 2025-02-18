@@ -10,6 +10,7 @@ using Diplomski.Application.UseCases.Commands;
 using Diplomski.Application.UseCases.Commands.Brand;
 using Diplomski.Application.UseCases.Commands.Category;
 using Diplomski.Application.UseCases.Commands.CategorySpecification;
+using Diplomski.Application.UseCases.Commands.Configuration;
 using Diplomski.Application.UseCases.Commands.Model;
 using Diplomski.Application.UseCases.Commands.ModelVersion;
 using Diplomski.Application.UseCases.Commands.ModelVersionSpecification;
@@ -40,6 +41,7 @@ using Diplomski.Implementation.UseCases.Commands.Brand;
 using Diplomski.Implementation.UseCases.Commands.Cart;
 using Diplomski.Implementation.UseCases.Commands.Category;
 using Diplomski.Implementation.UseCases.Commands.CategorySpecification;
+using Diplomski.Implementation.UseCases.Commands.Configuration;
 using Diplomski.Implementation.UseCases.Commands.Model;
 using Diplomski.Implementation.UseCases.Commands.ModelVersion;
 using Diplomski.Implementation.UseCases.Commands.ModelVersionSpecification;
@@ -206,6 +208,7 @@ namespace AspProjekat2024.API.Core
 
             services.AddTransient<IGetConfigurationsQuery, EfGetConfigurationsQuery>();
             services.AddTransient<IGetOneConfigurationQuery, EfGetOneConfigurationQuery>();
+            services.AddTransient<ICreateConfigurationCommand, EfCreateConfigurationCommand>();
 
 
 
