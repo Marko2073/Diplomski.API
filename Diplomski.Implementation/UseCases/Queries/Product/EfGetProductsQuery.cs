@@ -36,7 +36,9 @@ namespace Diplomski.Implementation.UseCases.Queries.Product
             }
             if(search.BrandId != null)
             {
-                query = query.Where(x => x.Model.BrandId == search.BrandId);
+                query = query.Where(x => search.BrandId.Contains(x.Model.BrandId));
+
+                
             }
             if(search.ModelVersionId != null)
             {

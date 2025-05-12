@@ -45,6 +45,8 @@ namespace Diplomski.Implementation.UseCases.Queries.Configuration
 
             }).ToList();
 
+
+
             foreach (var c in conf)
             {
                 decimal totalPrice = 0;

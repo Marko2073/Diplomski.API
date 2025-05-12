@@ -10,7 +10,7 @@ namespace Diplomski.Application.Dto.Searches
     {
         public int CategoryId { get; set; }
         public string? CategoryName { get; set; }
-        public int? BrandId { get; set; }
+        public List<int>? BrandId { get; set; }
         public int? ModelVersionId { get; set; }
         public int? ModelId { get; set; }
         public List<int>? SpecificationIds { get; set; }
