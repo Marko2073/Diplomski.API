@@ -71,7 +71,6 @@ builder.Services.AddAuthentication(options =>
     {
         OnAuthenticationFailed = context =>
         {
-            // Ako token nije validan, loguj grešku
             Console.WriteLine($"Invalid token: {context.Exception.Message}");
             return Task.CompletedTask;
         },
