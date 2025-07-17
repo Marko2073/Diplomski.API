@@ -24,28 +24,31 @@ namespace Diplomski.Implementation.UseCases.Queries.Configuration
 
         public IEnumerable<ConfigurationDto> Execute(BaseSearch search)
         {
-            var conf=Context.Configurations.Select(x => new ConfigurationDto
-            {
-                Id = x.Id,
-                UserId = x.UserId,
-                CreatedAt = x.CreatedAt,
-               
-                Components = x.Components.Select(x => new ComponentDto
+            var conf = Context.Configurations
+                .Select(x => new ConfigurationDto
                 {
-                    Id = x.ModelVersionId,
-                    ModelVersionName = x.ModelVersion.Model.Brand.Name+ " "+ x.ModelVersion.Model.Name,
-                    Price = x.ModelVersion.Prices.Where(x=>x.DateFrom<DateTime.Now && x.DateTo>DateTime.Now).FirstOrDefault().PriceValue,
-                    Quantity = x.Quantity,
-                    Pictures = x.ModelVersion.Pictures.Select(x => new PictureDto
+                    Id = x.Id,
+                    UserId = x.UserId,
+                    CreatedAt = x.CreatedAt,
+
+                    Components = x.Components.Select(c => new ComponentDto
                     {
-                        Id = x.Id,
-                        Path = x.Path
-                    })
-                }).ToList(),
-
-            }).ToList();
-
-
+                        Id = c.ModelVersionId,
+                        ModelVersionName = c.ModelVersion.Model.Brand.Name + " " + c.ModelVersion.Model.Name,
+                        // Ovde računamo važeću cenu iz ModelVersion.Prices
+                        Price = c.ModelVersion.Prices
+                            .Where(p => p.DateFrom < DateTime.Now && p.DateTo >= DateTime.Now)
+                            .Select(p => (decimal?)p.PriceValue)
+                            .FirstOrDefault() ?? 0,
+                        Quantity = c.Quantity,
+                        Pictures = c.ModelVersion.Pictures.Select(p => new PictureDto
+                        {
+                            Id = p.Id,
+                            Path = p.Path
+                        }).ToList()
+                    }).ToList()
+                })
+                .ToList(); // Izvlačimo u memoriju
 
             foreach (var c in conf)
             {
@@ -64,9 +67,7 @@ namespace Diplomski.Implementation.UseCases.Queries.Configuration
                 Console.WriteLine($"Configuration ID: {c.Id}, TotalPrice: {c.TotalPrice}");
             }
 
-
             return conf;
-
         }
     }
 }
